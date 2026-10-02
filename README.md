@@ -86,7 +86,7 @@ The repository carries everything a Claude Code cloud session (claude.ai/code) n
 | What | Where | Loaded in cloud sessions by |
 |------|-------|-----------------------------|
 | `vaadin-devloop` skill + `vaadin-dev` CLI | `.claude/skills/`, `.agents/skills/`, `.vaadin/` | committed files |
-| Playwright MCP (browser verification, uses the preinstalled Chromium) | `.mcp.json`, `.claude/scripts/playwright-mcp.sh` | committed files |
+| Playwright MCP (browser verification) | `.mcp.json` | committed files |
 | `vaadin-skills` plugin (skills + Vaadin docs MCP `https://mcp.vaadin.com/docs`) and `vaadin-agent-tools` plugin | `.claude/settings.json` (`enabledPlugins`) | environment setup script (below); `.claude/hooks/session-start.sh` as a fallback |
 | JDK 25 (the cloud image ships JDK 21), Maven dependencies | — | `.claude/hooks/session-start.sh` |
 
