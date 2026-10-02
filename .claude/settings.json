@@ -1,0 +1,14 @@
+{
+  "enabledPlugins": {
+    "vaadin-skills@vaadin-marketplace": true,
+    "vaadin-agent-tools@vaadin-marketplace": true
+  },
+  "extraKnownMarketplaces": {
+    "vaadin-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "vaadin/agent-marketplace"
+      }
+    }
+  }
+}
