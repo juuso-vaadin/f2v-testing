@@ -86,15 +86,15 @@ The repository carries everything a Claude Code cloud session (claude.ai/code) n
 | What | Where | Loaded in cloud sessions by |
 |------|-------|-----------------------------|
 | `vaadin-devloop` skill + `vaadin-dev` CLI | `.claude/skills/`, `.agents/skills/`, `.vaadin/` | committed files |
-| Vaadin docs MCP (`https://mcp.vaadin.com/docs`) | `.mcp.json` | committed files |
 | Playwright MCP (browser verification, uses the preinstalled Chromium) | `.mcp.json`, `.claude/scripts/playwright-mcp.sh` | committed files |
-| `vaadin-skills` and `vaadin-agent-tools` plugins | `.claude/settings.json` (`enabledPlugins`) | `.claude/hooks/session-start.sh` |
+| `vaadin-skills` plugin (skills + Vaadin docs MCP `https://mcp.vaadin.com/docs`) and `vaadin-agent-tools` plugin | `.claude/settings.json` (`enabledPlugins`) | environment setup script (below); `.claude/hooks/session-start.sh` as a fallback |
 | JDK 25 (the cloud image ships JDK 21), Maven dependencies | — | `.claude/hooks/session-start.sh` |
 
 Cloud sessions do not install the plugins that `enabledPlugins` lists, so the SessionStart hook installs
 them. A plugin installed after Claude Code has started is only fully active from the next session on,
-so the hook also hands Claude the paths of the plugin skills. To have the plugins (including the
-`vaadin-agent-tools` post-edit theme check) load natively from the first turn, add this to the cloud
+so the hook also hands Claude the paths of the plugin skills. Plugin MCP servers and hooks (the Vaadin
+docs MCP, the `vaadin-agent-tools` post-edit theme check) only load when the plugins are installed
+before Claude Code starts, so add this to the cloud
 environment's **setup script** (environment menu in the session title bar → Edit), which runs before
 Claude Code starts:
 
