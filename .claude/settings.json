@@ -12,7 +12,8 @@
     }
   },
   "enabledMcpjsonServers": [
-    "playwright"
+    "playwright",
+    "figma"
   ],
   "hooks": {
     "SessionStart": [
