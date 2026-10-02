@@ -46,14 +46,10 @@ for plugin in "${PLUGINS[@]}"; do
   fi
 done
 
-# 2. Install the Playwright MCP server so it starts quickly (see .mcp.json). The script locks
-#    the install, so this is safe while Claude Code is launching the same server.
-bash .claude/scripts/playwright-mcp.sh --install-only || log "could not install @playwright/mcp"
-
-# 3. Resolve Maven dependencies so `.vaadin/vaadin-dev start` and tests do not stall on downloads.
+# 2. Resolve Maven dependencies so `.vaadin/vaadin-dev start` and tests do not stall on downloads.
 ./mvnw -q -B dependency:resolve >&2 || log "maven dependency resolution failed"
 
-# 4. Tell Claude where the plugin skills live, for sessions where the plugins were installed by
+# 3. Tell Claude where the plugin skills live, for sessions where the plugins were installed by
 #    this hook (and are therefore not yet loaded as skills).
 skills=""
 for skill in "$PLUGIN_CACHE"/*/*/skills/*/SKILL.md; do

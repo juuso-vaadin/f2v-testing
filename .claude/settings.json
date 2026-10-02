@@ -12,6 +12,7 @@
     }
   },
   "enabledMcpjsonServers": [
+    "vaadin",
     "playwright",
     "figma"
   ],
