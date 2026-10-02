@@ -1,0 +1,23 @@
+{
+  "figmaFileUrl": "https://www.figma.com/design/Hv2rStg1rwBXbW2XK5jGtz/Figma-MCP-exercises---AcmeCorp",
+  "fileKey": "Hv2rStg1rwBXbW2XK5jGtz",
+  "vaadinVersion": "25.3.0",
+  "theme": "aura",
+  "themeFile": "src/main/resources/META-INF/resources/acme-theme.css",
+  "appStartCommand": ".vaadin/vaadin-dev start",
+  "appBaseUrl": "http://localhost:8080",
+  "targets": [
+    {
+      "name": "Orders (Figma frame 'Employee list')",
+      "nodeId": "9094:26504",
+      "route": "/orders",
+      "status": "verified"
+    },
+    {
+      "name": "Main navigation",
+      "nodeId": "9094:26555",
+      "route": "/orders",
+      "status": "verified"
+    }
+  ]
+}

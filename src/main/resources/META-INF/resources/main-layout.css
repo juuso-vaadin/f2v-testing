@@ -1,0 +1,72 @@
+/* Main navigation — Figma "Main navigation" (9094:26555) */
+
+vaadin-app-layout {
+  --vaadin-app-layout-drawer-width: 272px;
+}
+
+.main-nav {
+  padding: var(--vaadin-padding-l) 16px;
+  gap: var(--vaadin-gap-l);
+  box-sizing: border-box;
+}
+
+.main-nav-logo {
+  padding-inline: 8px;
+}
+
+.main-nav-logo img {
+  display: block;
+  width: 138px;
+  height: 56px;
+}
+
+.main-nav-scroller {
+  flex: 1;
+  min-height: 0;
+}
+
+.main-nav-groups {
+  gap: 16px;
+}
+
+/* Groups are spaced by the layout gap, not Aura's margin between consecutive side navs */
+.main-nav-groups > vaadin-side-nav {
+  margin: 0;
+}
+
+/* Group labels are 32px tall, with no gap before the first item */
+.main-nav-groups vaadin-side-nav::part(label) {
+  min-height: 32px;
+  padding: 0;
+  margin: 0;
+}
+
+/* Raised specificity: Aura pads tertiary buttons and buttons with a prefix avatar directly */
+.main-nav > vaadin-button.main-nav-user[theme~='tertiary'] {
+  padding: 0;
+  font-size: var(--acme-font-size-s);
+  --vaadin-button-padding: 0px;
+  --vaadin-button-gap: 8px;
+  --vaadin-button-height: 36px;
+  --vaadin-button-font-size: var(--acme-font-size-s);
+  --vaadin-button-font-weight: var(--aura-font-weight-medium);
+  --vaadin-button-text-color: var(--vaadin-text-color);
+}
+
+.main-nav-user::part(label) {
+  flex: 1;
+  text-align: start;
+  white-space: nowrap;
+}
+
+.main-nav-user vaadin-avatar {
+  --vaadin-avatar-size: 36px;
+  --vaadin-avatar-border-width: 0px;
+  --vaadin-avatar-text-color: var(--acme-primary-contrast-color);
+  font-size: var(--acme-font-size-s);
+  font-weight: var(--aura-font-weight-medium);
+}
+
+.main-nav-user > vaadin-icon[slot='suffix'] {
+  --vaadin-icon-size: 16px;
+}

@@ -12,7 +12,6 @@ import com.vaadin.flow.component.notification.NotificationVariant;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
-import com.vaadin.flow.router.Menu;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
@@ -25,7 +24,6 @@ import static com.vaadin.flow.spring.data.VaadinSpringDataHelpers.toSpringPageRe
 
 @Route(value = "")
 @PageTitle("Task List")
-@Menu(order = 0, icon = "icons/clipboard-check.svg", title = "Task List")
 class TaskListView extends VerticalLayout {
 
     private final TaskService taskService;

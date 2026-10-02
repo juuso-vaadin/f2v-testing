@@ -1,0 +1,257 @@
+/* AcmeCorp design system → Aura theme configuration.
+   Source: Figma "Figma MCP exercises - AcmeCorp" (Hv2rStg1rwBXbW2XK5jGtz),
+   collections "Colors" (Light/Dark) and "Sizes" (Normal mode). */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap');
+
+html {
+  /* Navigation is always dark; the content area follows the OS preference.
+     The file defines both Light and Dark modes. */
+  color-scheme: dark;
+  --aura-content-color-scheme: light dark;
+
+  /* Shades/Base */
+  --aura-background-color-light: #ffffff;
+  --aura-background-color-dark: #223948;
+
+  /* Shades/Contrast 100% (Header Text) — text and borders are computed from it */
+  --aura-neutral-light: #192a34;
+  --aura-neutral-dark: #f5fbff;
+
+  /* Semantic colors/Primary — teal, no close Aura palette color */
+  --aura-accent-color-light: #6ab4ac;
+  --aura-accent-color-dark: #48ada3;
+  --aura-accent-text-color-light: #4b958e;
+  --aura-accent-text-color-dark: #c0e4cf;
+  --aura-accent-contrast-color-light: #ffffff;
+  --aura-accent-contrast-color-dark: #ffffff;
+
+  /* Semantic colors — the design system's own error / success / warning */
+  --aura-red: #da554e;
+  --aura-green: #568415;
+  --aura-yellow: #ffcc00;
+  /* Informational blue ("In collection"); the design defines its light-mode values only,
+     so the dark scheme keeps Aura's computed blue text */
+  --aura-blue: #3266e4;
+
+  /* Typography */
+  --aura-font-family: 'Noto Sans', var(--aura-font-family-system);
+  --aura-base-font-size: 16;
+
+  /* Density — Figma fields/buttons are 48px; 24 (top of Aura's range) gives ~42px */
+  --aura-base-size: 24;
+
+  /* Border radius S / M / L */
+  --vaadin-radius-s: 4px;
+  --vaadin-radius-m: 8px;
+  --vaadin-radius-l: 12px;
+
+  /* Nav and content are flush with the viewport */
+  --aura-app-layout-inset: 0px;
+
+  /* Components/Field background, Components/Field border */
+  --vaadin-input-field-background: light-dark(#ffffff, #add3eb24);
+  --vaadin-input-field-border-color: light-dark(#1c425a29, #c9e6f880);
+  --vaadin-input-field-border-width: 1px;
+  /* Component text styles/Input field: Medium; placeholder uses Tertiary Text */
+  --vaadin-input-field-value-font-weight: var(--aura-font-weight-medium);
+  --vaadin-input-field-placeholder-color: light-dark(#1c384a85, #c9e6f880);
+
+  /* User colors */
+  --vaadin-user-color-0: #b77c60;
+  --vaadin-user-color-1: #650acc;
+  --vaadin-user-color-2: #097faa;
+  --vaadin-user-color-3: #ad6200;
+  --vaadin-user-color-4: #bf16f3;
+  --vaadin-user-color-5: #084391;
+  --vaadin-user-color-6: #078836;
+
+  /* Design-system values with no Aura equivalent, kept under their design names */
+  --acme-side-nav-background: light-dark(#f1f3f4, #395567);
+  --acme-base-shade-5pct: light-dark(#f9fafb, #294556);
+  --acme-checkbox-background: light-dark(#ffffff, #b4d8ee3b);
+
+  --acme-contrast-5pct: light-dark(#1949670f, #c0dff20f);
+  --acme-contrast-10pct: light-dark(#1a45601f, #add3eb24);
+  --acme-contrast-20pct: light-dark(#1c425a29, #b4d8ee3b);
+  --acme-contrast-30pct: light-dark(#1c3f5442, #baddf252);
+  --acme-contrast-40pct: light-dark(#1c3b4f61, #c1e1f569);
+  --acme-contrast-50pct: light-dark(#1c384a85, #c9e6f880);
+  --acme-contrast-60pct: light-dark(#1c354599, #d1eafa94);
+  --acme-contrast-70pct: light-dark(#1b3241b0, #d9effcb0);
+  --acme-contrast-80pct: light-dark(#1a303dd4, #e2f3fecc);
+  --acme-contrast-90pct: light-dark(#182d3af0, #ebf7ffe5);
+
+  --acme-shade-5pct: light-dark(#1949670f, #00000012);
+  --acme-shade-10pct: light-dark(#1a45601f, #05050526);
+  --acme-shade-20pct: light-dark(#1c425a29, #090a0b3b);
+  --acme-shade-30pct: light-dark(#1c3f5442, #0d0f1152);
+  --acme-shade-40pct: light-dark(#1c3b4f61, #11141869);
+  --acme-shade-50pct: light-dark(#1c384a85, #14191f80);
+  --acme-tint-10pct: light-dark(#ffffff5e, #add3eb24);
+
+  --acme-body-text-color: light-dark(#192d39f0, #ebf7ffe5);
+  --acme-secondary-text-color: light-dark(#1b3341b0, #d9effcb0);
+  --acme-tertiary-text-color: light-dark(#1c384a85, #c9e6f880);
+  --acme-disabled-text-color: light-dark(#1c3f5442, #baddf252);
+
+  --acme-primary-text-color: light-dark(#4b958e, #c0e4cf);
+  --acme-primary-contrast-color: #ffffff;
+  --acme-primary-50pct: light-dark(#81bba8c2, #c0e4cfc2);
+  --acme-primary-10pct: light-dark(#9bd4b333, #c0e4cf21);
+
+  --acme-error-text-color: light-dark(#d93930, #f5a7a3);
+  --acme-error-50pct: light-dark(#da595280, #d0716c80);
+  --acme-error-10pct: light-dark(#da59521a, #d36e6924);
+  --acme-error-contrast-color: #ffffff;
+
+  --acme-success-text-color: light-dark(#49760a, #86d912);
+  --acme-success-50pct: light-dark(#59881680, #95f50f80);
+  --acme-success-10pct: light-dark(#5988161a, #95f50f1a);
+  --acme-success-contrast-color: #ffffff;
+
+  --acme-info-text-color: light-dark(#2b59c8, var(--aura-blue-text));
+  --acme-info-10pct: color-mix(in srgb, var(--aura-blue) 10%, transparent);
+
+  --acme-warning-color: light-dark(#ffcc00, #f5af00);
+  --acme-warning-text-color: light-dark(#985211, #fecb45);
+  --acme-warning-10pct: light-dark(#ffcc0040, #ffaa0033);
+  --acme-warning-contrast-color: light-dark(#182739f0, #16202ce5);
+
+  /* Sizes (Normal mode) */
+  --acme-field-height: 48px;
+  --acme-field-label-gap: 6px;
+  --acme-button-height: 48px;
+  --acme-button-padding-inline: 16px;
+  --acme-button-padding-inline-tertiary: 6px;
+  --acme-button-padding-inline-icon: 12px;
+  --acme-overlay-border-width: 1px;
+  --acme-icon-size-m: 24px;
+
+  --acme-font-size-xxs: 12px;
+  --acme-font-size-xs: 13px;
+  --acme-font-size-s: 14px;
+  --acme-font-size-m: 16px;
+  --acme-font-size-l: 18px;
+  --acme-font-size-xl: 22px;
+  --acme-font-size-xxl: 28px;
+  --acme-font-size-xxxl: 40px;
+}
+
+/* Aura recomputes the accent text and contrast colors on each accent-aware component
+   (the selector list Aura itself uses), which would discard the design's Primary text and
+   contrast colors set on html. Re-assert them there for the global accent; elements that opt
+   into another palette color keep Aura's computed values. */
+:is(vaadin-avatar, vaadin-badge, vaadin-button, vaadin-confirm-dialog, vaadin-context-menu-item,
+    vaadin-crud-edit, vaadin-dialog, vaadin-drawer-toggle, vaadin-menu-bar-button, vaadin-menu-bar-item,
+    vaadin-message, vaadin-notification-card, vaadin-notification-container, vaadin-select-item,
+    vaadin-tab, vaadin-upload-button, vaadin-upload-file):not(.aura-accent-neutral, .aura-accent-red,
+    .aura-accent-orange, .aura-accent-yellow, .aura-accent-green, .aura-accent-blue, .aura-accent-purple),
+vaadin-checkbox::part(checkbox),
+vaadin-radio-button::part(radio),
+vaadin-side-nav-item::part(content),
+vaadin-app-layout::part(content),
+vaadin-message::part(attachment),
+vaadin-notification-card::part(overlay) {
+  --aura-accent-text-color-light: #4b958e;
+  --aura-accent-text-color-dark: #c0e4cf;
+  --aura-accent-contrast-color-light: #ffffff;
+  --aura-accent-contrast-color-dark: #ffffff;
+}
+
+/* Badge (Style=Normal): tinted fill, no border, 4px/8px padding around a 17px line.
+   Aura recomputes the accent text/contrast colors inside a badge, so the design's
+   primary text and contrast colors are referenced directly. */
+vaadin-badge {
+  height: auto;
+  line-height: 17px;
+  --vaadin-badge-border-width: 0px;
+  --vaadin-badge-padding: 4px 8px;
+  --vaadin-badge-border-radius: var(--vaadin-radius-m);
+  --vaadin-badge-font-size: var(--acme-font-size-s);
+  --vaadin-badge-font-weight: var(--aura-font-weight-medium);
+  --vaadin-badge-line-height: 17px;
+  --vaadin-badge-background: var(--acme-primary-10pct);
+  --vaadin-badge-text-color: var(--acme-primary-text-color);
+}
+
+vaadin-badge.aura-accent-neutral {
+  --vaadin-badge-background: var(--acme-contrast-5pct);
+  --vaadin-badge-text-color: var(--acme-contrast-80pct);
+}
+
+vaadin-badge.aura-accent-blue {
+  --vaadin-badge-background: var(--acme-info-10pct);
+  --vaadin-badge-text-color: var(--acme-info-text-color);
+}
+
+vaadin-badge[theme~='success'] {
+  --vaadin-badge-background: var(--acme-success-10pct);
+  --vaadin-badge-text-color: var(--acme-success-text-color);
+}
+
+vaadin-badge[theme~='warning'] {
+  --vaadin-badge-background: var(--acme-warning-10pct);
+  --vaadin-badge-text-color: var(--acme-warning-text-color);
+}
+
+vaadin-badge[theme~='error'] {
+  --vaadin-badge-background: var(--acme-error-10pct);
+  --vaadin-badge-text-color: var(--acme-error-text-color);
+}
+
+vaadin-badge[theme~='filled'] {
+  --vaadin-badge-background: var(--aura-accent-color);
+  --vaadin-badge-text-color: var(--acme-primary-contrast-color);
+}
+
+vaadin-badge[theme~='filled'][theme~='success'] {
+  --vaadin-badge-background: var(--aura-green);
+  --vaadin-badge-text-color: var(--acme-success-contrast-color);
+}
+
+vaadin-badge[theme~='filled'][theme~='warning'] {
+  --vaadin-badge-background: var(--acme-warning-color);
+  --vaadin-badge-text-color: var(--acme-warning-contrast-color);
+}
+
+vaadin-badge[theme~='filled'][theme~='error'] {
+  --vaadin-badge-background: var(--aura-red);
+  --vaadin-badge-text-color: var(--acme-error-contrast-color);
+}
+
+/* App Layout drawer: Components/Side nav background */
+html {
+  --vaadin-app-layout-drawer-background: var(--acme-side-nav-background);
+}
+
+/* Side Nav: group labels use the Field label text style */
+vaadin-side-nav {
+  --vaadin-side-nav-items-gap: 0px;
+  --vaadin-side-nav-label-color: var(--acme-secondary-text-color);
+  --vaadin-side-nav-label-font-size: var(--acme-font-size-s);
+  --vaadin-side-nav-label-font-weight: var(--aura-font-weight-medium);
+  --vaadin-side-nav-label-line-height: 17px;
+}
+
+/* Side Nav Item (State=Default / State=Current) */
+/* 8px inset in the design, of which the (transparent unless current) border takes 1px */
+vaadin-side-nav-item {
+  --vaadin-side-nav-item-padding: 7px;
+  --vaadin-side-nav-item-gap: 12px;
+  --vaadin-side-nav-item-border-radius: var(--vaadin-radius-l);
+  --vaadin-side-nav-item-border-width: 1px;
+  --vaadin-side-nav-item-border-color: transparent;
+  --vaadin-side-nav-item-background: transparent;
+  --vaadin-side-nav-item-font-size: var(--acme-font-size-m);
+  --vaadin-side-nav-item-font-weight: var(--aura-font-weight-medium);
+  --vaadin-side-nav-item-line-height: 22px;
+  --vaadin-side-nav-item-text-color: var(--acme-body-text-color);
+  --vaadin-icon-size: var(--acme-icon-size-m);
+}
+
+/* Aura assigns the current item's colors on its content part */
+vaadin-side-nav-item[current]::part(content) {
+  --vaadin-side-nav-item-background: var(--acme-contrast-10pct);
+  --vaadin-side-nav-item-border-color: var(--acme-contrast-50pct);
+  --vaadin-side-nav-item-text-color: var(--vaadin-text-color);
+}

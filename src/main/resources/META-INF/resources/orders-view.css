@@ -1,0 +1,350 @@
+/* Orders view — Figma "Employee list" (9094:26504), content region only */
+
+.orders-view {
+  background: var(--aura-background-color);
+  color: var(--acme-body-text-color);
+  overflow: hidden;
+}
+
+/* View header */
+
+.orders-view-header {
+  padding: var(--vaadin-padding-l);
+  border-bottom: 1px solid var(--acme-contrast-10pct);
+}
+
+.orders-view-title-block,
+.orders-view-kpi {
+  gap: 4px;
+}
+
+.orders-view-section,
+.orders-view-kpi-label {
+  color: var(--acme-secondary-text-color);
+  font-size: var(--aura-font-size-m);
+  line-height: 1.611;
+}
+
+.orders-view-title,
+.orders-view-kpi-value {
+  margin: 0;
+  font-size: var(--acme-font-size-xxl);
+  font-weight: var(--aura-font-weight-semibold);
+  line-height: 1.253;
+}
+
+.orders-view-title {
+  color: var(--vaadin-text-color);
+}
+
+.orders-view-kpi-value {
+  color: var(--acme-body-text-color);
+}
+
+.orders-view-kpis {
+  padding-inline: var(--vaadin-padding-l);
+  gap: var(--vaadin-gap-l);
+}
+
+.orders-view-kpis > .orders-view-kpi + .orders-view-kpi {
+  border-inline-start: 1px solid var(--acme-contrast-10pct);
+  padding-inline-start: var(--vaadin-padding-l);
+}
+
+/* Content area */
+
+.orders-view-content {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* Order list */
+
+.orders-view-list {
+  flex-shrink: 0;
+  background: var(--aura-background-color);
+  border-inline-end: 1px solid var(--acme-contrast-10pct);
+}
+
+.orders-view-filters {
+  padding-block: 16px;
+  gap: var(--vaadin-gap-s);
+}
+
+.orders-view-search {
+  padding-inline: 16px;
+}
+
+/* Scrolls horizontally; the scrollbar is hidden as the design draws none */
+.orders-view-status-chip-scroller {
+  scrollbar-width: none;
+}
+
+.orders-view-status-chips {
+  gap: 4px;
+  padding-inline: 16px;
+  width: max-content;
+}
+
+.orders-view-status-chip {
+  flex-shrink: 0;
+  cursor: var(--vaadin-clickable-cursor);
+}
+
+.orders-view-list-items {
+  border-top: 1px solid var(--acme-contrast-10pct);
+  min-height: 0;
+}
+
+.orders-view-order-card {
+  --vaadin-card-background: var(--acme-shade-5pct);
+  --vaadin-card-border-width: 0px;
+  --vaadin-card-border-radius: 0px;
+  --vaadin-card-shadow: none;
+  --vaadin-card-padding: 16px;
+  --vaadin-card-gap: 16px;
+  --vaadin-card-title-color: var(--vaadin-text-color);
+  --vaadin-card-title-font-size: var(--acme-font-size-m);
+  --vaadin-card-title-font-weight: var(--aura-font-weight-semibold);
+  --vaadin-card-title-line-height: 20px;
+  --vaadin-card-subtitle-color: var(--acme-secondary-text-color);
+  --vaadin-card-subtitle-font-size: var(--acme-font-size-s);
+  --vaadin-card-subtitle-line-height: 17px;
+  border-bottom: 1px solid var(--acme-contrast-10pct);
+  cursor: var(--vaadin-clickable-cursor);
+}
+
+.orders-view-order-card.selected {
+  --vaadin-card-background: var(--aura-background-color);
+}
+
+.orders-view-order-card [slot='subtitle'],
+.orders-view-contact-card [slot='subtitle'] {
+  font-weight: var(--aura-font-weight-medium);
+}
+
+.orders-view-order-summary {
+  gap: 10px;
+  font-size: var(--acme-font-size-s);
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+/* Order details */
+
+.orders-view-details-scroller {
+  flex: 1;
+  min-width: 0;
+}
+
+.orders-view-details {
+  padding: var(--vaadin-padding-l);
+  gap: var(--vaadin-gap-l);
+}
+
+.orders-view-order-header {
+  gap: 4px;
+}
+
+.orders-view-order-title-block {
+  gap: 4px;
+}
+
+.orders-view-order-title {
+  margin: 0;
+  color: var(--vaadin-text-color);
+  font-size: var(--acme-font-size-xl);
+  font-weight: var(--aura-font-weight-semibold);
+  line-height: 1.253;
+}
+
+.orders-view-order-date {
+  color: var(--acme-secondary-text-color);
+  font-size: var(--aura-font-size-m);
+  line-height: 1.611;
+}
+
+.orders-view-contacts {
+  gap: var(--vaadin-gap-l);
+}
+
+.orders-view-contact {
+  flex: 1;
+  min-width: 0;
+  gap: 8px;
+}
+
+.orders-view-contact-label {
+  color: var(--acme-secondary-text-color);
+  font-size: var(--acme-font-size-s);
+  line-height: 1.34;
+}
+
+/* Raised specificity: the outlined variant sets its own border color */
+.orders-view .orders-view-contact-card {
+  --vaadin-card-background: var(--aura-background-color);
+  --vaadin-card-border-color: var(--acme-contrast-20pct);
+  --vaadin-card-border-width: 1px;
+  --vaadin-card-border-radius: var(--vaadin-radius-m);
+  --vaadin-card-shadow: none;
+  --vaadin-card-padding: 16px;
+  --vaadin-card-gap: 16px;
+  --vaadin-card-title-color: var(--vaadin-text-color);
+  --vaadin-card-title-font-size: var(--acme-font-size-m);
+  --vaadin-card-title-font-weight: var(--aura-font-weight-semibold);
+  --vaadin-card-title-line-height: 20px;
+  --vaadin-card-subtitle-color: var(--acme-secondary-text-color);
+  --vaadin-card-subtitle-font-size: var(--acme-font-size-s);
+  --vaadin-card-subtitle-line-height: 17px;
+}
+
+.orders-view-contact-media {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  overflow: hidden;
+  border-radius: var(--vaadin-radius-s);
+}
+
+/* The customer logo is cropped from a larger image, as in the design */
+.orders-view-contact-media img[src*='webuyglobal'] {
+  position: absolute;
+  left: -18.75%;
+  top: -15.63%;
+  width: 137.5%;
+  height: 137.5%;
+}
+
+.orders-view-contact-media img[src*='acme'] {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.orders-view-section-title {
+  margin: 0;
+  color: var(--vaadin-text-color);
+  font-size: var(--aura-font-size-l);
+  font-weight: var(--aura-font-weight-semibold);
+  line-height: 1.253;
+}
+
+/* Order status timeline */
+
+.orders-view-timeline {
+  gap: 8px;
+}
+
+.orders-view-step {
+  gap: 6px;
+  min-width: 120px;
+  padding: 8px 12px;
+  box-sizing: border-box;
+  background: var(--acme-contrast-5pct);
+  border: 1px solid var(--acme-contrast-10pct);
+  border-radius: var(--vaadin-radius-m);
+  font-size: var(--aura-font-size-xs);
+  white-space: nowrap;
+}
+
+.orders-view-step.current {
+  background: var(--aura-background-color);
+  border-color: var(--aura-accent-color);
+  box-shadow: 0 3px 6px var(--acme-shade-20pct), 0 2px 2px var(--acme-shade-20pct);
+}
+
+.orders-view-step.pending {
+  background: none;
+  border: 1px dashed var(--acme-contrast-20pct);
+}
+
+.orders-view-step-label {
+  color: var(--vaadin-text-color);
+  font-weight: var(--aura-font-weight-semibold);
+  line-height: 1.253;
+  letter-spacing: 0.39px;
+  text-transform: uppercase;
+}
+
+.orders-view-step-time {
+  color: var(--acme-secondary-text-color);
+  line-height: 1.25;
+  white-space: pre;
+}
+
+.orders-view-timeline-arrow {
+  flex-shrink: 0;
+  --vaadin-icon-size: 16px;
+  color: var(--acme-tertiary-text-color);
+}
+
+.orders-view-timeline-arrow.pending {
+  color: var(--acme-disabled-text-color);
+}
+
+/* Line items */
+
+.orders-view-line-items-section {
+  gap: 16px;
+}
+
+.orders-view-line-items {
+  --vaadin-grid-background: var(--aura-background-color);
+  --vaadin-grid-border-color: var(--acme-contrast-10pct);
+  --vaadin-grid-border-radius: 0px;
+  --vaadin-grid-header-font-size: var(--acme-font-size-s);
+  --vaadin-grid-header-font-weight: var(--aura-font-weight-medium);
+  --vaadin-grid-header-text-color: var(--acme-body-text-color);
+  --vaadin-grid-cell-padding: 6px 12px;
+  color: var(--acme-body-text-color);
+  font-size: var(--aura-font-size-m);
+}
+
+/* Header 54px, rows 52px, footer 52px; outer cells inset 16px */
+.orders-view-line-items::part(header-cell) {
+  --vaadin-grid-cell-padding: 16px 12px;
+}
+
+.orders-view-line-items::part(footer-cell) {
+  --vaadin-grid-cell-padding: 15px 12px;
+  font-size: var(--acme-font-size-s);
+  font-weight: var(--aura-font-weight-medium);
+}
+
+.orders-view-line-items::part(first-column-cell) {
+  --vaadin-grid-cell-padding: 6px 12px 6px 16px;
+}
+
+.orders-view-line-items::part(first-column-cell header-cell) {
+  --vaadin-grid-cell-padding: 16px 12px 16px 16px;
+}
+
+.orders-view-line-items::part(first-column-cell footer-cell) {
+  --vaadin-grid-cell-padding: 15px 12px 15px 16px;
+}
+
+.orders-view-product {
+  gap: 4px;
+}
+
+.orders-view-product-name {
+  line-height: 1.25;
+}
+
+.orders-view-product-description {
+  color: var(--acme-secondary-text-color);
+  font-size: var(--aura-font-size-xs);
+  line-height: 1.25;
+}
+
+/* Scrolls horizontally; the scrollbar is hidden as the design draws none.
+   Block padding leaves room for the current step's shadow. */
+.orders-view-timeline-scroller {
+  scrollbar-width: none;
+  padding-block: 4px 8px;
+  margin-block: -4px -8px;
+}
+
+.orders-view-timeline {
+  width: max-content;
+}
