@@ -79,6 +79,32 @@ If you use commercial components, pass the license key as a build secret:
 docker build --secret id=proKey,src=$HOME/.vaadin/proKey .
 ```
 
+## Agentic Development (Claude Code on the web)
+
+The repository carries everything a Claude Code cloud session (claude.ai/code) needs:
+
+| What | Where | Loaded in cloud sessions by |
+|------|-------|-----------------------------|
+| `vaadin-devloop` skill + `vaadin-dev` CLI | `.claude/skills/`, `.agents/skills/`, `.vaadin/` | committed files |
+| Vaadin docs MCP (`https://mcp.vaadin.com/docs`) | `.mcp.json` | committed files |
+| Playwright MCP (browser verification, uses the preinstalled Chromium) | `.mcp.json`, `.claude/scripts/playwright-mcp.sh` | committed files |
+| `vaadin-skills` and `vaadin-agent-tools` plugins | `.claude/settings.json` (`enabledPlugins`) | `.claude/hooks/session-start.sh` |
+| JDK 25 (the cloud image ships JDK 21), Maven dependencies | — | `.claude/hooks/session-start.sh` |
+
+Cloud sessions do not install the plugins that `enabledPlugins` lists, so the SessionStart hook installs
+them. A plugin installed after Claude Code has started is only fully active from the next session on,
+so the hook also hands Claude the paths of the plugin skills. To have the plugins (including the
+`vaadin-agent-tools` post-edit theme check) load natively from the first turn, add this to the cloud
+environment's **setup script** (environment menu in the session title bar → Edit), which runs before
+Claude Code starts:
+
+```bash
+apt-get install -y openjdk-25-jdk-headless || (apt-get update && apt-get install -y openjdk-25-jdk-headless)
+claude plugin marketplace add vaadin/agent-marketplace
+claude plugin install vaadin-skills@vaadin-marketplace
+claude plugin install vaadin-agent-tools@vaadin-marketplace
+```
+
 ## Next Steps
 
 The [Building Apps](https://vaadin.com/docs/v25/building-apps) guides contain hands-on advice for adding features to 
