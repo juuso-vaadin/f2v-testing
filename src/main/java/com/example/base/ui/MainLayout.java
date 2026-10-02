@@ -1,74 +1,86 @@
 package com.example.base.ui;
 
 import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.Unit;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.avatar.AvatarVariant;
-import com.vaadin.flow.component.html.Span;
-import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.button.ButtonVariant;
+import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.component.icon.SvgIcon;
-import com.vaadin.flow.component.orderedlayout.*;
+import com.vaadin.flow.component.orderedlayout.Scroller;
+import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.sidenav.SideNav;
 import com.vaadin.flow.component.sidenav.SideNavItem;
 import com.vaadin.flow.router.Layout;
-import com.vaadin.flow.server.menu.MenuConfiguration;
-import com.vaadin.flow.server.menu.MenuEntry;
+import com.vaadin.flow.theme.lumo.LumoIcon;
 
 @Layout
 public final class MainLayout extends AppLayout {
 
+    private static final String USER_NAME = "Firstname Lastname";
+
     MainLayout() {
         setPrimarySection(Section.DRAWER);
-        addToDrawer(createApplicationHeader(), createApplicationDrawer(), createApplicationFooter());
+        // A full-height layout keeps scrolling inside the views' content areas
+        getStyle().setHeight("100%");
+
+        var scroller = new Scroller(createNavigation());
+        var drawer = new VerticalLayout(createLogo(), scroller, createUserButton());
+        drawer.addClassName("app-drawer");
+        drawer.setSizeFull();
+        drawer.setPadding(false);
+        drawer.setSpacing("var(--vaadin-gap-xl)");
+        drawer.expand(scroller);
+        addToDrawer(drawer);
     }
 
-    private Component createApplicationHeader() {
-        // TODO Replace with real application logo and name
-        var appLogo = new Avatar("My Application");
-        appLogo.addClassName("app-logo");
-        appLogo.addThemeVariants(AvatarVariant.AURA_FILLED, AvatarVariant.XSMALL);
-
-        var appName = new Span("My Application");
-        appName.addClassName("app-name");
-
-        var header = new HorizontalLayout(appLogo, appName);
-        header.setAlignItems(FlexComponent.Alignment.CENTER);
-        header.setPadding(true);
-        return header;
+    private Component createLogo() {
+        var logo = new Image("icons/acme-corp-logo.svg", "ACME Corp");
+        logo.addClassName("app-logo");
+        return logo;
     }
 
-    private Component createApplicationDrawer() {
-        var scroller = new Scroller(createSideNav());
-        scroller.addThemeVariants(ScrollerVariant.OVERFLOW_INDICATORS);
-        return scroller;
+    private Component createNavigation() {
+        var navigation = new VerticalLayout(
+                createNavGroup(null, createItem("Dashboard", null, "dashboard")),
+                createNavGroup("Sales", createItem("Orders", "orders", "orders"),
+                        createItem("Deliveries", null, "deliveries"), createItem("Reports", null, "reports")),
+                createNavGroup("Resources", createItem("Employees", null, "employees"),
+                        createItem("Utilisation", null, "utilisation"), createItem("Payroll", null, "payroll")),
+                createNavGroup("Admin", createItem("Access management", null, "access-management"),
+                        createItem("Settings", null, "settings")));
+        navigation.setPadding(false);
+        navigation.setSpacing("var(--vaadin-gap-l)");
+        return navigation;
     }
 
-    private Component createApplicationFooter() {
-        var footer = new VerticalLayout(new Span("Made with ❤️ with Vaadin"));
-        footer.setAlignItems(FlexComponent.Alignment.CENTER);
-        footer.addClassName("app-footer");
-        return footer;
-    }
-
-    private SideNav createSideNav() {
+    private static SideNav createNavGroup(String label, SideNavItem... items) {
         var nav = new SideNav();
-        nav.setMinWidth(200, Unit.PIXELS);
-        MenuConfiguration.getMenuEntries().forEach(entry -> nav.addItem(createSideNavItem(entry)));
+        nav.addClassName("app-nav");
+        nav.setWidthFull();
+        if (label != null) {
+            nav.setLabel(label);
+        }
+        nav.addItem(items);
         return nav;
     }
 
-    private SideNavItem createSideNavItem(MenuEntry menuEntry) {
-        if (menuEntry.icon() != null) {
-            Component icon = null;
-            if (menuEntry.icon().contains(".svg")) {
-                icon = new SvgIcon(menuEntry.icon());
-            } else {
-                icon = new Icon(menuEntry.icon());
-            }
-            return new SideNavItem(menuEntry.title(), menuEntry.menuClass(), icon);
-        } else {
-            return new SideNavItem(menuEntry.title(), menuEntry.menuClass());
-        }
+    /** Only Orders has a view yet; the other entries are shown without a target. */
+    private static SideNavItem createItem(String label, String path, String icon) {
+        var svg = new SvgIcon("icons/nav-" + icon + ".svg");
+        return path == null ? new SideNavItem(label, (String) null, svg) : new SideNavItem(label, path, svg);
+    }
+
+    private Component createUserButton() {
+        var avatar = new Avatar(USER_NAME);
+        avatar.setColorIndex(0);
+        avatar.addThemeVariants(AvatarVariant.AURA_FILLED);
+        var button = new Button(USER_NAME, avatar);
+        button.addClassName("app-user");
+        button.addThemeVariants(ButtonVariant.TERTIARY);
+        button.setSuffixComponent(LumoIcon.DROPDOWN.create());
+        button.setWidthFull();
+        return button;
     }
 }

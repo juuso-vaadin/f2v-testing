@@ -1,0 +1,160 @@
+.orders-view-header {
+    padding: var(--vaadin-padding-xl);
+    border-bottom: 1px solid var(--vaadin-border-color-secondary);
+}
+
+.orders-view-header h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: var(--aura-font-weight-semibold);
+    line-height: 1.253;
+}
+
+.orders-view-section,
+.orders-kpi-label,
+.order-details-date {
+    color: var(--vaadin-text-color-secondary);
+}
+
+.orders-view-kpis {
+    padding-inline: var(--vaadin-padding-xl);
+}
+
+.orders-kpi-label,
+.orders-kpi-value {
+    white-space: nowrap;
+}
+
+.orders-kpi-value {
+    font-size: 28px;
+    font-weight: var(--aura-font-weight-semibold);
+    line-height: 1.253;
+}
+
+.orders-kpi-divider {
+    align-self: stretch;
+    width: 1px;
+    background: var(--vaadin-border-color-secondary);
+}
+
+.orders-filters {
+    padding: var(--vaadin-padding-l);
+    overflow: hidden;
+}
+
+.orders-filter {
+    flex-shrink: 0;
+    cursor: var(--vaadin-clickable-cursor);
+}
+
+.orders-filter-active {
+    --vaadin-badge-background: var(--aura-accent-color);
+    --vaadin-badge-text-color: var(--aura-accent-contrast-color);
+}
+
+.orders-list-item {
+    --vaadin-card-padding: var(--vaadin-padding-l);
+    --vaadin-card-gap: var(--vaadin-gap-l);
+    --vaadin-card-title-font-size: var(--aura-font-size-m);
+    --vaadin-card-title-line-height: 20px;
+    --vaadin-card-subtitle-font-size: var(--aura-font-size-s);
+    --vaadin-card-subtitle-line-height: 17px;
+    border-radius: 0;
+    border-width: 0 0 1px;
+    box-shadow: none;
+    background: var(--vaadin-background-container);
+    cursor: var(--vaadin-clickable-cursor);
+}
+
+.orders-list-item-summary {
+    font-size: var(--aura-font-size-s);
+    line-height: 20px;
+}
+
+.orders-list-item-selected {
+    background: var(--vaadin-background-color);
+}
+
+.order-details {
+    padding: var(--vaadin-padding-xl);
+}
+
+.order-details-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: var(--aura-font-weight-semibold);
+    line-height: 1.253;
+}
+
+.order-details-caption {
+    color: var(--vaadin-text-color-secondary);
+    font-size: var(--aura-font-size-s);
+}
+
+.order-contact img {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.order-details-section-title {
+    margin: 0;
+    font-size: var(--aura-font-size-l);
+    font-weight: var(--aura-font-weight-semibold);
+    line-height: 1.253;
+}
+
+.order-step {
+    flex-shrink: 0;
+    min-width: 120px;
+    padding: 8px 12px;
+    border: 1px solid var(--vaadin-border-color-secondary);
+    border-radius: var(--vaadin-radius-m);
+    background: var(--vaadin-background-container);
+}
+
+.order-step-current {
+    border-color: var(--aura-accent-color);
+    background: var(--vaadin-background-color);
+    box-shadow: var(--aura-shadow-s);
+}
+
+.order-step-pending {
+    border-style: dashed;
+    border-color: var(--vaadin-border-color);
+    background: transparent;
+}
+
+.order-step-name {
+    font-size: var(--aura-font-size-xs);
+    font-weight: var(--aura-font-weight-semibold);
+    line-height: 1.253;
+    letter-spacing: 0.39px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.order-step-time {
+    color: var(--vaadin-text-color-secondary);
+    font-size: var(--aura-font-size-xs);
+    line-height: 1.25;
+}
+
+.order-step-arrow {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    color: var(--vaadin-text-color-secondary);
+}
+
+.order-item-description {
+    color: var(--vaadin-text-color-secondary);
+    font-size: var(--aura-font-size-xs);
+    line-height: 1.25;
+}
+
+.order-items::part(header-cell) {
+    font-size: var(--aura-font-size-s);
+    font-weight: var(--aura-font-weight-medium);
+}

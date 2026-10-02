@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600&display=swap');
+
+html {
+  /* Dark navigation, light content (Figma: Components/Side nav background #395567) */
+  color-scheme: dark;
+  --aura-content-color-scheme: light;
+
+  /* Figma lumo-primary-color #6ab4ac (text variant #4b958e) */
+  --aura-accent-color-light: #6ab4ac;
+  --aura-accent-color-dark: #6ab4ac;
+  --aura-accent-text-color-light: #4b958e;
+
+  /* Figma lumo-base #ffffff for content; side nav background for the dark scheme */
+  --aura-background-color-light: #ffffff;
+  --aura-background-color-dark: #395567;
+
+  --aura-font-family: 'Noto Sans', var(--aura-font-family-system);
+  --aura-base-font-size: 16;
+
+  /* Figma lumo-border-radius-m 8 (radius-m = 2r+3) */
+  --aura-base-radius: 2.5;
+
+  /* Design is full-bleed, no inset around the layout */
+  --aura-app-layout-inset: 0px;
+
+  --vaadin-user-color-0: #b77c60;
+
+  /* Input fields: border #1c425a29, 1px, white background */
+  --vaadin-input-field-border-color: #1c425a29;
+  --vaadin-input-field-border-width: 1px;
+  /* Figma vaadin-input-field-height 48; Aura applies this padding twice, 9px renders a 48px field */
+  --vaadin-input-field-padding: 9px 10px;
+
+  /* Badges in the design are borderless, with the medium radius */
+  --vaadin-badge-border-width: 0;
+  --vaadin-badge-border-radius: var(--vaadin-radius-m);
+}
+
+/* Badges in the design are tinted with the accent color, without a border */
+vaadin-badge {
+  --vaadin-badge-background: color-mix(in srgb, var(--aura-accent-color) 12%, transparent);
+}
+
+vaadin-badge[theme~='error'] {
+  --vaadin-badge-background: color-mix(in srgb, var(--aura-red) 12%, transparent);
+}
+
+vaadin-badge[theme~='filled'] {
+  --vaadin-badge-background: var(--aura-accent-color);
+}

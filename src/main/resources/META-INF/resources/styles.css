@@ -1,29 +1,39 @@
-/* Add your styles here */
+@import "acme-theme.css";
+
+vaadin-app-layout {
+    --vaadin-app-layout-drawer-width: 272px;
+}
+
+.app-drawer {
+    padding: var(--vaadin-padding-xl) var(--vaadin-padding-l);
+}
 
 .app-logo {
-    border-radius: min(40%, var(--vaadin-radius-m));
-    margin-inline-start: var(--vaadin-padding-inline-container);
+    width: 138px;
+    height: 56px;
+    margin-inline: var(--vaadin-padding-s);
 }
 
-.app-name {
-    font-weight: var(--aura-font-weight-semibold);
-    font-size: var(--aura-font-size-l);
+.app-nav {
+    --vaadin-side-nav-item-gap: var(--vaadin-gap-m);
+    --vaadin-side-nav-item-padding: var(--vaadin-padding-s);
+    --vaadin-side-nav-item-border-radius: var(--vaadin-radius-l);
 }
 
-.app-footer {
-    color: var(--vaadin-text-color-secondary);
+.app-nav vaadin-side-nav-item[current]::part(content) {
+    --vaadin-side-nav-item-background: color-mix(in srgb, var(--vaadin-text-color) 14%, transparent);
+    --vaadin-side-nav-item-border-width: 1px;
+    --vaadin-side-nav-item-border-color: color-mix(in srgb, var(--vaadin-text-color) 50%, transparent);
+}
+
+vaadin-button.app-user {
+    --vaadin-button-padding: 0;
+    --vaadin-avatar-size: 36px;
     font-size: var(--aura-font-size-s);
-}
-
-/* TODO: This is only for demo purposes. You can delete it. */
-vaadin-side-nav:has(vaadin-side-nav-item:only-child)::after {
-    display: block;
-    content: "More menu items will appear here when you add more views.";
-    font-size: var(--aura-font-size-s);
-    color: var(--vaadin-text-color-secondary);
-    box-sizing: border-box;
-    padding: 1em;
-    max-width: 14em;
-    min-width: 100%;
-    white-space: normal;
+    font-weight: var(--aura-font-weight-medium);
+    --vaadin-button-gap: var(--vaadin-gap-s);
+    --vaadin-button-text-color: var(--vaadin-text-color);
+    justify-content: flex-start;
+    text-align: start;
+    white-space: nowrap;
 }
