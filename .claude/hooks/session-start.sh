@@ -46,8 +46,9 @@ for plugin in "${PLUGINS[@]}"; do
   fi
 done
 
-# 2. Warm the npm cache for the Playwright MCP server so it starts quickly (see .mcp.json).
-npx -y @playwright/mcp@0.0.83 --help >/dev/null 2>&1 || log "could not prefetch @playwright/mcp"
+# 2. Install the Playwright MCP server so it starts quickly (see .mcp.json). The script locks
+#    the install, so this is safe while Claude Code is launching the same server.
+bash .claude/scripts/playwright-mcp.sh --install-only || log "could not install @playwright/mcp"
 
 # 3. Resolve Maven dependencies so `.vaadin/vaadin-dev start` and tests do not stall on downloads.
 ./mvnw -q -B dependency:resolve >&2 || log "maven dependency resolution failed"
