@@ -1,15 +1,18 @@
 {
   "mcpServers": {
     "playwright": {
-      "type": "stdio",
-      "command": "bash",
+      "command": "npx",
       "args": [
-        ".claude/scripts/playwright-mcp.sh"
+        "@playwright/mcp@latest"
       ]
     },
     "figma": {
       "type": "http",
       "url": "https://mcp.figma.com/mcp"
+    },
+    "vaadin": {
+      "type": "http",
+      "url": "https://mcp.vaadin.com/docs"
     }
   }
 }
