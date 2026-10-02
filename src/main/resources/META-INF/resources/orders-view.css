@@ -1,0 +1,438 @@
+.orders-view {
+    --orders-view-border: 1px solid var(--vaadin-border-color-secondary, rgba(26, 69, 96, 0.12));
+    --orders-view-subtle-background: var(--vaadin-background-container, rgba(25, 73, 103, 0.06));
+    --orders-view-accent: #6ab4ac;
+    --orders-view-accent-text: #4b958e;
+    --orders-view-accent-subtle: rgba(155, 212, 179, 0.2);
+    --orders-view-info-text: #2b59c8;
+    --orders-view-info-subtle: rgba(50, 102, 228, 0.1);
+    --orders-view-error-text: #d93930;
+    --orders-view-error-subtle: rgba(218, 89, 82, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--vaadin-background-color, white);
+}
+
+.orders-view h1,
+.orders-view h2,
+.orders-view h3 {
+    margin: 0;
+    color: var(--vaadin-text-color, #192a34);
+    font-weight: var(--aura-font-weight-semibold, 600);
+    line-height: 1.25;
+}
+
+/* Header */
+
+.orders-view-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 24px;
+    border-bottom: var(--orders-view-border);
+}
+
+vaadin-app-layout:not([overlay]) .orders-view-header vaadin-drawer-toggle {
+    display: none;
+}
+
+.orders-view-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.orders-view-section,
+.orders-view-kpi-label {
+    color: var(--vaadin-text-color-secondary, rgba(27, 51, 65, 0.69));
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.orders-view h1,
+.orders-view-kpi-value {
+    font-size: 28px;
+    font-weight: var(--aura-font-weight-semibold, 600);
+    line-height: 1.25;
+}
+
+.orders-view-kpis {
+    display: flex;
+    gap: 24px;
+    padding-inline: 24px;
+}
+
+.orders-view-kpi {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.orders-view-kpi + .orders-view-kpi {
+    padding-inline-start: 24px;
+    border-inline-start: var(--orders-view-border);
+}
+
+/* Body: list and details side by side */
+
+.orders-view-body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
+.orders-view-list {
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    flex-shrink: 0;
+    border-inline-end: var(--orders-view-border);
+}
+
+.orders-view-list-toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-block: 16px;
+    border-bottom: var(--orders-view-border);
+}
+
+.orders-view-list-toolbar vaadin-text-field {
+    padding: 0 16px;
+    box-sizing: border-box;
+    --vaadin-input-field-height: 48px;
+}
+
+.orders-view-filters {
+    display: flex;
+    gap: 4px;
+    padding-inline: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.orders-view-list-items {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.orders-view-empty {
+    padding: 24px 16px;
+    color: var(--vaadin-text-color-secondary, rgba(27, 51, 65, 0.69));
+}
+
+/* Order cards in the list. The selected card is lifted onto the page background. */
+
+.orders-view-card {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    border-bottom: var(--orders-view-border);
+}
+
+.orders-view-card:focus-visible {
+    outline: 2px solid var(--vaadin-focus-ring-color, var(--orders-view-accent));
+    outline-offset: -2px;
+}
+
+.orders-view-card vaadin-card {
+    --vaadin-card-background: var(--orders-view-subtle-background);
+    --vaadin-card-border-radius: 0;
+    --vaadin-card-padding: 16px;
+    --vaadin-card-gap: 16px;
+    --vaadin-card-title-font-size: 16px;
+    --vaadin-card-title-font-weight: var(--aura-font-weight-semibold, 600);
+    --vaadin-card-title-color: var(--vaadin-text-color, #192a34);
+    --vaadin-card-subtitle-font-size: 14px;
+    --vaadin-card-subtitle-color: var(--vaadin-text-color-secondary, rgba(27, 51, 65, 0.69));
+}
+
+.orders-view-card[aria-current] vaadin-card {
+    --vaadin-card-background: var(--vaadin-background-color, white);
+}
+
+.orders-view-card:hover:not([aria-current]) vaadin-card {
+    --vaadin-card-background: color-mix(in srgb, var(--vaadin-text-color, #192a34) 9%, transparent);
+}
+
+.orders-view-card-summary {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+/* Status badges and filters */
+
+.orders-view vaadin-badge {
+    --vaadin-badge-border-radius: 8px;
+    --vaadin-badge-padding: 4px 8px;
+    --vaadin-badge-font-size: 14px;
+    --vaadin-badge-line-height: 17px;
+    --vaadin-badge-background: var(--orders-view-subtle-background);
+    --vaadin-badge-text-color: var(--vaadin-text-color-secondary, rgba(26, 48, 61, 0.83));
+    flex-shrink: 0;
+}
+
+.orders-view vaadin-badge.status-in-collection {
+    --vaadin-badge-background: var(--orders-view-info-subtle);
+    --vaadin-badge-text-color: var(--orders-view-info-text);
+}
+
+.orders-view vaadin-badge.status-in-delivery {
+    --vaadin-badge-background: var(--orders-view-accent-subtle);
+    --vaadin-badge-text-color: var(--orders-view-accent-text);
+}
+
+/* Aura paints filled badges with its accent color rather than the badge properties */
+.orders-view vaadin-badge.status-delivered {
+    --aura-accent-color: var(--orders-view-accent);
+    --aura-accent-contrast-color: white;
+}
+
+.orders-view vaadin-badge.status-cancelled {
+    --vaadin-badge-background: var(--orders-view-error-subtle);
+    --vaadin-badge-text-color: var(--orders-view-error-text);
+}
+
+.orders-view-filter {
+    --vaadin-button-height: 25px;
+    --vaadin-button-padding: 4px 8px;
+    --vaadin-button-border-radius: 8px;
+    --vaadin-button-border-width: 0;
+    --vaadin-button-font-size: 14px;
+    --vaadin-button-font-weight: var(--aura-font-weight-medium, 500);
+    --vaadin-button-background: var(--orders-view-subtle-background);
+    --vaadin-button-text-color: var(--vaadin-text-color-secondary, rgba(26, 48, 61, 0.83));
+    --vaadin-button-shadow: none;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.orders-view-filter[aria-pressed="true"] {
+    --vaadin-button-background: var(--orders-view-accent);
+    --vaadin-button-text-color: white;
+}
+
+/* Details */
+
+.orders-view-details {
+    flex: 1;
+    min-width: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px;
+}
+
+.orders-view-details-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.orders-view-details-header > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+.orders-view h2 {
+    font-size: 22px;
+}
+
+.orders-view-details-date {
+    color: var(--vaadin-text-color-secondary, rgba(27, 51, 65, 0.69));
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.orders-view-details-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.orders-view h3 {
+    font-size: 18px;
+}
+
+/* Contacts */
+
+.orders-view-contacts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.orders-view-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1 1 280px;
+}
+
+.orders-view-contact-label {
+    color: var(--vaadin-text-color-secondary, rgba(27, 51, 65, 0.69));
+    font-size: 14px;
+    line-height: 1.34;
+}
+
+.orders-view-contact vaadin-card {
+    --vaadin-card-padding: 16px;
+    --vaadin-card-gap: 16px;
+    --vaadin-card-border-radius: 8px;
+    --vaadin-card-border-color: var(--vaadin-border-color, rgba(28, 66, 90, 0.16));
+    --vaadin-card-title-font-size: 16px;
+    --vaadin-card-title-font-weight: var(--aura-font-weight-semibold, 600);
+    --vaadin-card-title-color: var(--vaadin-text-color, #192a34);
+    --vaadin-card-subtitle-font-size: 14px;
+    --vaadin-card-subtitle-color: var(--vaadin-text-color-secondary, rgba(27, 51, 65, 0.69));
+}
+
+.orders-view-contact vaadin-card img {
+    width: 32px;
+    height: 32px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+/* Order status steps */
+
+.orders-view-steps {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.orders-view-step-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.orders-view-step {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 120px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    border: var(--orders-view-border);
+    border-radius: 8px;
+    background: var(--orders-view-subtle-background);
+    font-size: 13px;
+    flex-shrink: 0;
+}
+
+.orders-view-step.current {
+    background: var(--vaadin-background-color, white);
+    border-color: var(--orders-view-accent);
+    box-shadow: 0 3px 6px rgba(28, 66, 90, 0.16), 0 2px 2px rgba(28, 66, 90, 0.16);
+}
+
+.orders-view-step.pending {
+    background: transparent;
+    border: 1px dashed var(--vaadin-border-color, rgba(28, 66, 90, 0.16));
+}
+
+.orders-view-step-label {
+    color: var(--vaadin-text-color, #192a34);
+    font-weight: var(--aura-font-weight-semibold, 600);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    line-height: 1.25;
+}
+
+.orders-view-step-info {
+    display: flex;
+    flex-direction: column;
+    color: var(--vaadin-text-color-secondary, rgba(27, 51, 65, 0.69));
+    line-height: 1.25;
+}
+
+.orders-view-step-arrow {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--vaadin-text-color-disabled, rgba(28, 56, 74, 0.4));
+    padding: 0;
+}
+
+/* Line items */
+
+.orders-view-line-items {
+    border: var(--orders-view-border);
+    --vaadin-grid-cell-padding: 16px;
+}
+
+.orders-view-line-items::part(header-cell),
+.orders-view-line-items::part(footer-cell) {
+    font-size: 14px;
+    font-weight: var(--aura-font-weight-medium, 500);
+}
+
+.orders-view-line-items::part(body-cell) {
+    font-size: 16px;
+}
+
+.orders-view-product {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.orders-view-product-description {
+    color: var(--vaadin-text-color-secondary, rgba(27, 51, 65, 0.69));
+    font-size: 13px;
+}
+
+/* Narrow screens: stack the header figures under the title, and the list above the details */
+
+@media (max-width: 800px) {
+    .orders-view {
+        height: auto;
+        min-height: 100%;
+    }
+
+    .orders-view-header {
+        flex-wrap: wrap;
+        padding: 16px;
+    }
+
+    .orders-view-kpis {
+        flex-basis: 100%;
+        padding-inline: 0;
+    }
+
+    .orders-view-kpi-value {
+        font-size: 22px;
+    }
+
+    .orders-view-body {
+        flex-direction: column;
+    }
+
+    .orders-view-list {
+        width: auto;
+        border-inline-end: none;
+        border-bottom: var(--orders-view-border);
+    }
+
+    .orders-view-list-items {
+        max-height: 40vh;
+    }
+
+    .orders-view-details {
+        overflow: visible;
+        padding: 16px;
+    }
+}

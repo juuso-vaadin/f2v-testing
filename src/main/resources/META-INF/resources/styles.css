@@ -1,29 +1,166 @@
 /* Add your styles here */
 
-.app-logo {
-    border-radius: min(40%, var(--vaadin-radius-m));
-    margin-inline-start: var(--vaadin-padding-inline-container);
+/* Main navigation: a dark drawer next to a flush, light content area */
+
+vaadin-app-layout {
+    --app-drawer-background: #395567;
+    --app-drawer-text-color: rgba(235, 247, 255, 0.9);
+    --app-drawer-text-color-strong: #f5fbff;
+    --app-drawer-text-color-secondary: rgba(217, 239, 252, 0.69);
+    --app-drawer-item-hover-background: rgba(173, 211, 235, 0.08);
+    --app-drawer-item-current-background: rgba(173, 211, 235, 0.14);
+    --app-drawer-item-current-border-color: rgba(201, 230, 248, 0.5);
+
+    --vaadin-app-layout-drawer-background: var(--app-drawer-background);
+    --vaadin-app-layout-drawer-width: 272px;
 }
 
-.app-name {
-    font-weight: var(--aura-font-weight-semibold);
-    font-size: var(--aura-font-size-l);
+/* Aura insets the content as a rounded card; the design has it flush against the drawer */
+vaadin-app-layout[has-drawer] {
+    padding-block: 0;
+    padding-inline-end: 0;
 }
 
-.app-footer {
-    color: var(--vaadin-text-color-secondary);
-    font-size: var(--aura-font-size-s);
+vaadin-app-layout[has-drawer]::part(content) {
+    border: none;
+    border-radius: 0;
+    background: var(--vaadin-background-color, white);
 }
 
-/* TODO: This is only for demo purposes. You can delete it. */
-vaadin-side-nav:has(vaadin-side-nav-item:only-child)::after {
-    display: block;
-    content: "More menu items will appear here when you add more views.";
-    font-size: var(--aura-font-size-s);
-    color: var(--vaadin-text-color-secondary);
+vaadin-app-layout[has-drawer]::part(drawer) {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 16px;
     box-sizing: border-box;
-    padding: 1em;
-    max-width: 14em;
-    min-width: 100%;
-    white-space: normal;
+    background: var(--app-drawer-background);
+    color: var(--app-drawer-text-color);
+    border: none;
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    padding-inline: 8px;
+}
+
+.app-logo {
+    display: block;
+    width: 138px;
+    height: 56px;
+}
+
+vaadin-app-layout > vaadin-scroller.app-navigation-scroller {
+    --vaadin-scroller-padding-inline: 0;
+    --vaadin-scroller-padding-block: 0;
+    flex: 1;
+    min-height: 0;
+    padding: 0;
+}
+
+.app-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.app-navigation vaadin-side-nav {
+    margin: 0;
+    --vaadin-side-nav-items-gap: 0;
+    --vaadin-side-nav-label-color: var(--app-drawer-text-color-secondary);
+    --vaadin-side-nav-label-font-size: 14px;
+    --vaadin-side-nav-label-font-weight: var(--aura-font-weight-medium, 500);
+    --vaadin-side-nav-label-line-height: 17px;
+}
+
+.app-navigation vaadin-side-nav:has(> [slot="label"])::part(label) {
+    min-height: 32px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+/* Aura sets the item colors on the content part, so they are overridden there */
+.app-navigation vaadin-side-nav-item::part(content) {
+    --vaadin-side-nav-item-background: transparent;
+    --vaadin-side-nav-item-border-width: 1px;
+    --vaadin-side-nav-item-border-color: transparent;
+    --vaadin-side-nav-item-border-radius: 12px;
+    --vaadin-side-nav-item-padding: 7px;
+    --vaadin-side-nav-item-gap: 12px;
+    --vaadin-side-nav-item-font-size: 16px;
+    --vaadin-side-nav-item-font-weight: var(--aura-font-weight-medium, 500);
+    --vaadin-side-nav-item-line-height: 24px;
+    --vaadin-side-nav-item-text-color: var(--app-drawer-text-color);
+}
+
+.app-navigation vaadin-side-nav-item:not([current])::part(content):hover {
+    --vaadin-side-nav-item-background: var(--app-drawer-item-hover-background);
+    --vaadin-side-nav-item-text-color: var(--app-drawer-text-color-strong);
+}
+
+.app-navigation vaadin-side-nav-item[current]::part(content) {
+    --vaadin-side-nav-item-background: var(--app-drawer-item-current-background);
+    --vaadin-side-nav-item-border-color: var(--app-drawer-item-current-border-color);
+    --vaadin-side-nav-item-text-color: var(--app-drawer-text-color-strong);
+}
+
+.app-navigation vaadin-side-nav-item > [slot="prefix"] {
+    --vaadin-icon-size: 24px;
+    width: 24px;
+    height: 24px;
+    color: inherit;
+    opacity: 1;
+}
+
+/* Signed-in user menu at the bottom of the drawer */
+
+.app-user-menu {
+    --vaadin-button-text-color: var(--app-drawer-text-color-strong);
+    width: 100%;
+}
+
+.app-user-menu vaadin-menu-bar-button {
+    width: 100%;
+    height: auto;
+    min-height: 36px;
+    padding: 0;
+    margin: 0;
+}
+
+.app-user-menu vaadin-menu-bar-button::part(label) {
+    width: 100%;
+}
+
+.app-user-menu vaadin-menu-bar-button:hover {
+    background: var(--app-drawer-item-hover-background);
+}
+
+.app-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.app-user-avatar {
+    --vaadin-avatar-size: 36px;
+    --vaadin-avatar-background: #b77c60;
+    --vaadin-avatar-text-color: white;
+    background: #b77c60;
+    color: white;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.app-user-name {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: start;
+    color: var(--app-drawer-text-color-strong);
+    font-size: 14px;
+    font-weight: var(--aura-font-weight-medium, 500);
 }
