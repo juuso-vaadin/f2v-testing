@@ -55,6 +55,11 @@ html {
   /* Component text styles/Input field: Medium; placeholder uses Tertiary Text */
   --vaadin-input-field-value-font-weight: var(--aura-font-weight-medium);
   --vaadin-input-field-placeholder-color: light-dark(#1c384a85, #c9e6f880);
+  /* Component text styles/Field label */
+  --vaadin-input-field-label-color: var(--acme-secondary-text-color);
+  --vaadin-input-field-label-font-size: var(--acme-font-size-s);
+  --vaadin-input-field-label-font-weight: var(--aura-font-weight-medium);
+  --vaadin-input-field-label-line-height: 17px;
 
   /* User colors */
   --vaadin-user-color-0: #b77c60;
@@ -254,4 +259,17 @@ vaadin-side-nav-item[current]::part(content) {
   --vaadin-side-nav-item-background: var(--acme-contrast-10pct);
   --vaadin-side-nav-item-border-color: var(--acme-contrast-50pct);
   --vaadin-side-nav-item-text-color: var(--vaadin-text-color);
+}
+
+/* Radio button group (horizontal): 12px between options, where Aura uses 36px */
+vaadin-radio-group[theme~='horizontal']::part(group-field) {
+  column-gap: 12px;
+}
+
+/* Radio button label: Normal body text. Without this it falls back to the Field label style. */
+vaadin-radio-button {
+  --vaadin-radio-button-label-color: var(--acme-body-text-color);
+  --vaadin-radio-button-label-font-size: var(--acme-font-size-m);
+  --vaadin-radio-button-label-font-weight: var(--aura-font-weight-regular);
+  --vaadin-radio-button-label-line-height: 22px;
 }

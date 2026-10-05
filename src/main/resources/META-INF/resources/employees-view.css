@@ -1,0 +1,229 @@
+/* Employees view — Figma "Employee list" (6377:6991), content region only */
+
+.employees-view {
+  background: var(--aura-background-color);
+  color: var(--acme-body-text-color);
+  overflow: hidden;
+}
+
+/* View header: underline tabs instead of Aura's segmented tabs */
+
+.employees-view-tabs {
+  --vaadin-tabs-background: transparent;
+  --vaadin-tabs-padding: 0px;
+  --vaadin-tabs-gap: 24px;
+  --vaadin-tabs-border-radius: 0px;
+  flex-shrink: 0;
+  padding-inline: 24px;
+  border-bottom: 1px solid var(--acme-contrast-10pct);
+}
+
+.employees-view-tabs::part(tabs) {
+  margin: 0;
+  padding: 0;
+}
+
+/* Text 36px tall, 10px above it, the 2px indicator 10px below it */
+.employees-view-tabs > vaadin-tab {
+  --vaadin-tab-background: transparent;
+  --vaadin-tab-border-width: 0px;
+  --vaadin-tab-border-radius: 0px;
+  --vaadin-tab-padding: 10px 0 12px;
+  --vaadin-tab-font-size: var(--acme-font-size-m);
+  --vaadin-tab-font-weight: var(--aura-font-weight-medium);
+  --vaadin-tab-line-height: 36px;
+  --vaadin-tab-text-color: var(--acme-tertiary-text-color);
+  position: relative;
+}
+
+.employees-view-tabs > vaadin-tab[selected] {
+  --vaadin-tab-background: transparent;
+  --vaadin-tab-text-color: var(--acme-primary-text-color);
+  box-shadow: none;
+}
+
+.employees-view-tabs > vaadin-tab[selected]::before {
+  content: '';
+  position: absolute;
+  inset: auto auto 0 50%;
+  width: 30px;
+  height: 2px;
+  translate: -50% 0;
+  border-radius: 1px 1px 0 0;
+  background: var(--aura-accent-color);
+}
+
+/* Toolbar */
+
+.employees-view-toolbar {
+  flex-shrink: 0;
+  padding: var(--vaadin-padding-l);
+}
+
+.employees-view-kpis {
+  gap: var(--vaadin-gap-l);
+}
+
+.employees-view-kpi {
+  width: 200px;
+  gap: 4px;
+}
+
+/* The 1px divider between the KPIs, 24px from each */
+.employees-view-kpis > .employees-view-kpi + .employees-view-kpi {
+  width: 225px;
+  padding-inline-start: var(--vaadin-padding-l);
+  border-inline-start: 1px solid var(--acme-contrast-10pct);
+}
+
+.employees-view-kpi-label {
+  color: var(--acme-secondary-text-color);
+  font-size: var(--acme-font-size-m);
+  line-height: 1.611;
+}
+
+.employees-view-kpi-value {
+  color: var(--acme-body-text-color);
+  font-size: var(--acme-font-size-xxl);
+  font-weight: var(--aura-font-weight-semibold);
+  line-height: 1.253;
+}
+
+.employees-view-kpi-change {
+  height: 19px;
+  color: var(--acme-secondary-text-color);
+  font-size: var(--acme-font-size-xs);
+  line-height: 1.25;
+}
+
+.employees-view-kpi-change-positive {
+  color: var(--acme-success-text-color);
+}
+
+.employees-view-actions {
+  gap: 16px;
+}
+
+/* 24px icon overlapping its 20px slot by 4px: 12px start padding, 4px to the label.
+   Raised specificity: Aura pads buttons with a prefix icon directly. */
+.employees-view-toolbar .employees-view-actions > vaadin-button {
+  --vaadin-icon-size: var(--acme-icon-size-m);
+  --vaadin-button-gap: 4px;
+  padding-inline: 12px 16px;
+}
+
+/* Master-detail content */
+
+.employees-view-content {
+  --vaadin-master-detail-layout-border-width: 0px;
+  --vaadin-master-detail-layout-detail-background: var(--aura-background-color);
+  min-height: 0;
+}
+
+/* Grid: header 54px, rows 52px including the 1px row border; outer cells inset 24px, 24px between columns */
+.employees-view-grid {
+  --vaadin-grid-background: var(--aura-background-color);
+  --vaadin-grid-border-width: 1px;
+  --vaadin-grid-border-color: var(--acme-contrast-10pct);
+  --vaadin-grid-border-radius: 0px;
+  --vaadin-grid-header-font-size: var(--acme-font-size-s);
+  --vaadin-grid-header-font-weight: var(--aura-font-weight-medium);
+  --vaadin-grid-header-text-color: var(--acme-body-text-color);
+  --vaadin-grid-row-selected-background-color: var(--acme-primary-10pct);
+  --vaadin-grid-cell-padding: 12px 12px 13px;
+  color: var(--acme-body-text-color);
+  font-size: var(--acme-font-size-m);
+  line-height: 26px;
+}
+
+.employees-view-grid::part(header-cell) {
+  --vaadin-grid-cell-padding: 18px 12px 19px;
+  line-height: 17px;
+}
+
+.employees-view-grid::part(first-column-cell) {
+  --vaadin-grid-cell-padding: 12px 12px 13px 24px;
+}
+
+.employees-view-grid::part(last-column-cell) {
+  --vaadin-grid-cell-padding: 12px 24px 13px 12px;
+}
+
+.employees-view-grid::part(first-column-cell header-cell) {
+  --vaadin-grid-cell-padding: 18px 12px 19px 24px;
+}
+
+.employees-view-grid::part(last-column-cell header-cell) {
+  --vaadin-grid-cell-padding: 18px 24px 19px 12px;
+}
+
+/* Detail: the form panel, inset 24px except at the top */
+
+.employees-view-detail {
+  padding: 0 var(--vaadin-padding-l) var(--vaadin-padding-l);
+}
+
+.employees-view-form {
+  background: var(--acme-base-shade-5pct);
+  border: 1px solid var(--acme-contrast-10pct);
+  border-radius: var(--vaadin-radius-l);
+  overflow: hidden;
+}
+
+.employees-view-form-scroller {
+  min-height: 0;
+}
+
+.employees-view-form-content {
+  padding: 32px var(--vaadin-padding-l) 0;
+  gap: 32px;
+}
+
+.employees-view-form-header,
+.employees-view-title-block {
+  gap: 4px;
+}
+
+.employees-view-name {
+  margin: 0;
+  color: var(--vaadin-text-color);
+  font-size: var(--acme-font-size-xl);
+  font-weight: var(--aura-font-weight-semibold);
+  line-height: 1.253;
+}
+
+.employees-view-service-time {
+  color: var(--acme-secondary-text-color);
+  font-size: var(--acme-font-size-m);
+  line-height: 1.611;
+}
+
+.employees-view-form-section,
+.employees-view-form-row {
+  gap: 16px;
+}
+
+.employees-view-section-title {
+  margin: 0;
+  color: var(--vaadin-text-color);
+  font-size: var(--acme-font-size-l);
+  font-weight: var(--aura-font-weight-semibold);
+  line-height: 1.253;
+}
+
+.employees-view-form-footer {
+  flex-shrink: 0;
+  padding: 16px var(--vaadin-padding-l);
+  border-top: 1px solid var(--acme-contrast-10pct);
+}
+
+.employees-view-form-actions {
+  gap: 12px;
+}
+
+/* Error variant drawn as an outlined button on the base color */
+.employees-view-remove {
+  --vaadin-button-background: var(--aura-background-color);
+  --vaadin-button-border-color: var(--acme-error-50pct);
+  --vaadin-button-text-color: var(--acme-error-text-color);
+}

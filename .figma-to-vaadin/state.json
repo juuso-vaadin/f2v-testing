@@ -18,6 +18,12 @@
       "nodeId": "9094:26555",
       "route": "/orders",
       "status": "verified"
+    },
+    {
+      "name": "Employees (Figma frame 'Employee list')",
+      "nodeId": "6377:6991",
+      "route": "/employees",
+      "status": "verified"
     }
   ]
 }
