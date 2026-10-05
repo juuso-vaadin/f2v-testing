@@ -1,0 +1,166 @@
+.employees-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.employees-tabs {
+    border-bottom: 1px solid var(--vaadin-border-color-secondary, rgba(0, 0, 0, 0.12));
+    padding-inline: 24px;
+}
+
+.employees-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+}
+
+.employees-kpis {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+}
+
+.employees-view .kpi {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 200px;
+}
+
+.employees-view .kpi-label,
+.employees-view .kpi .kpi-label ~ div {
+    color: var(--vaadin-text-color-secondary);
+}
+
+.employees-view .kpi > div {
+    font-size: var(--aura-font-size-xs, 0.8125rem);
+}
+
+.employees-view .kpi-value {
+    font-size: var(--aura-font-size-xl, 1.75rem);
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--vaadin-text-color);
+}
+
+.employees-view .kpi-note {
+    color: #49760a;
+}
+
+.employees-view .kpi-divider {
+    width: 1px;
+    background: var(--vaadin-border-color-secondary, rgba(0, 0, 0, 0.12));
+}
+
+.employees-actions {
+    display: flex;
+    gap: 16px;
+}
+
+.employees-layout {
+    flex: 1;
+    min-height: 0;
+    padding-inline-end: 24px;
+    padding-block-end: 24px;
+    box-sizing: border-box;
+}
+
+.employee-detail {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--vaadin-border-color-secondary, rgba(0, 0, 0, 0.12));
+    border-radius: 12px;
+    margin-inline-start: 24px;
+    background: var(--vaadin-background-color, white);
+}
+
+.detail-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    overflow: auto;
+}
+
+.detail-body > h3 {
+    margin: 8px 0 -4px;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.detail-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.detail-title h2 {
+    margin: 0;
+    font-size: var(--aura-font-size-l, 1.375rem);
+}
+
+.detail-title span {
+    color: var(--vaadin-text-color-secondary);
+}
+
+.detail-row {
+    display: flex;
+    gap: 16px;
+}
+
+.detail-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-top: 1px solid var(--vaadin-border-color-secondary, rgba(0, 0, 0, 0.12));
+}
+
+.detail-actions-end {
+    display: flex;
+    gap: 12px;
+}
+
+/* Acme teal accent, as in the design */
+.employees-view {
+    --aura-accent-color: #6ab4ac;
+    --vaadin-text-color-accent: #4b958e;
+}
+
+.employees-tabs {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    border-inline: 0;
+    border-top: 0;
+}
+
+.employees-tabs vaadin-tab {
+    background: transparent;
+    box-shadow: none;
+    color: var(--vaadin-text-color-secondary);
+}
+
+.employees-tabs vaadin-tab[selected] {
+    color: #4b958e;
+    border-bottom: 2px solid #6ab4ac;
+}
+
+.employees-view vaadin-button[theme~="primary"] {
+    background: #6ab4ac;
+    border-color: #6ab4ac;
+    color: white;
+}
+
+.employees-view vaadin-radio-button {
+    --vaadin-radio-button-checked-color: #6ab4ac;
+}

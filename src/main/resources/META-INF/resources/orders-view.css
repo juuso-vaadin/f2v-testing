@@ -1,0 +1,212 @@
+.orders-view {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.orders-header {
+    padding: var(--vaadin-padding-l, 24px);
+    border-bottom: 1px solid var(--vaadin-border-color-secondary, rgba(0, 0, 0, 0.12));
+    box-sizing: border-box;
+}
+
+.orders-title > span,
+.kpi-label {
+    color: var(--vaadin-text-color-secondary);
+}
+
+.orders-title h2 {
+    margin: 0;
+    font-size: var(--aura-font-size-xl, 1.75rem);
+}
+
+.orders-kpis {
+    display: flex;
+    align-items: stretch;
+    gap: var(--vaadin-gap-l, 24px);
+    padding-inline: 24px;
+    white-space: nowrap;
+}
+
+.kpi {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.kpi-value {
+    font-size: var(--aura-font-size-xl, 1.75rem);
+    font-weight: var(--aura-font-weight-semibold, 600);
+}
+
+.kpi-divider {
+    width: 1px;
+    background: var(--vaadin-border-color-secondary, rgba(0, 0, 0, 0.12));
+}
+
+.orders-content {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+}
+
+.order-list-pane {
+    flex: none;
+    width: 360px;
+    display: flex;
+    flex-direction: column;
+    border-inline-end: 1px solid var(--vaadin-border-color-secondary, rgba(0, 0, 0, 0.12));
+    overflow: hidden;
+}
+
+.order-list-top {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+}
+
+.order-filters {
+    display: flex;
+    gap: 4px;
+    overflow: hidden;
+}
+
+.order-list {
+    overflow-y: auto;
+    border-top: 1px solid var(--vaadin-border-color-secondary, rgba(0, 0, 0, 0.12));
+}
+
+.order-card {
+    display: block;
+    cursor: pointer;
+    border-radius: 0;
+    border: 0;
+    border-bottom: 1px solid var(--vaadin-border-color-secondary, rgba(0, 0, 0, 0.12));
+    box-shadow: none;
+}
+
+.order-card.selected {
+    background: var(--vaadin-background-container, rgba(0, 0, 0, 0.06));
+}
+
+.order-card-info {
+    display: flex;
+    gap: 10px;
+}
+
+.order-details {
+    flex: 1;
+    min-width: 0;
+    padding: 24px;
+    overflow: auto;
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-title h2 {
+    margin: 0;
+}
+
+.order-title > span,
+.field-label,
+.line-description {
+    color: var(--vaadin-text-color-secondary);
+}
+
+.line-description {
+    display: block;
+    font-size: var(--aura-font-size-s, 0.8125rem);
+}
+
+.order-details h3 {
+    margin: 24px 0 12px;
+    font-size: var(--aura-font-size-l, 1.125rem);
+}
+
+.order-contacts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.order-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.order-steps {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.step-arrow {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    color: var(--vaadin-text-color-secondary);
+}
+
+.order-step {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 9px 12px;
+    border: 1px solid var(--vaadin-border-color-secondary, rgba(0, 0, 0, 0.12));
+    border-radius: var(--vaadin-radius-m, 8px);
+    background: var(--vaadin-background-container, rgba(0, 0, 0, 0.04));
+    font-size: var(--aura-font-size-s, 0.8125rem);
+    white-space: nowrap;
+}
+
+.order-step.current {
+    border-color: var(--vaadin-border-color, var(--aura-accent-color, teal));
+    background: var(--vaadin-background-color, white);
+}
+
+.order-step.pending {
+    border-style: dashed;
+    background: transparent;
+}
+
+.step-label {
+    font-weight: var(--aura-font-weight-semibold, 600);
+}
+
+/* Filter badges: one horizontally scrollable row */
+.order-filters {
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.order-filters::-webkit-scrollbar {
+    display: none;
+}
+
+.order-filters vaadin-badge {
+    flex: none;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* The status steps are wider than the pane: scroll them instead of the whole pane */
+.order-details {
+    overflow-x: hidden;
+}
+
+.order-steps {
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.order-steps::-webkit-scrollbar {
+    display: none;
+}

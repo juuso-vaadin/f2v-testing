@@ -15,15 +15,143 @@
     font-size: var(--aura-font-size-s);
 }
 
-/* TODO: This is only for demo purposes. You can delete it. */
-vaadin-side-nav:has(vaadin-side-nav-item:only-child)::after {
-    display: block;
-    content: "More menu items will appear here when you add more views.";
-    font-size: var(--aura-font-size-s);
-    color: var(--vaadin-text-color-secondary);
+/* Main navigation (Acme) */
+.main-layout::part(drawer) {
+    --nav-text: rgba(235, 247, 255, 0.9);
+    --nav-text-secondary: rgba(217, 239, 252, 0.69);
+    --nav-text-header: #f5fbff;
+    background: #395567;
+    color: var(--nav-text);
+    border: 0;
+    --vaadin-app-layout-drawer-width: 272px;
+}
+
+.main-layout {
+    --vaadin-app-layout-drawer-width: 272px;
+}
+
+.main-layout > .nav-logo {
     box-sizing: border-box;
-    padding: 1em;
-    max-width: 14em;
-    min-width: 100%;
-    white-space: normal;
+    width: 154px;
+    height: 56px;
+    margin: 24px 16px 24px;
+    padding-inline: 8px;
+}
+
+.nav-scroller {
+    flex: 1;
+    padding-inline: 16px;
+}
+
+.nav-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.nav-sections vaadin-side-nav {
+    --vaadin-side-nav-item-color: var(--nav-text);
+    color: var(--nav-text);
+}
+
+.nav-sections vaadin-side-nav::part(label),
+.nav-sections vaadin-side-nav [slot="label"] {
+    color: var(--nav-text-secondary);
+    font-size: var(--aura-font-size-s, 0.875rem);
+    font-weight: 500;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-sections vaadin-side-nav-item {
+    color: var(--nav-text);
+    font-weight: 500;
+    --vaadin-side-nav-item-border-radius: 12px;
+}
+
+.nav-sections vaadin-side-nav-item::part(content) {
+    padding: 8px;
+    gap: 12px;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    color: var(--nav-text);
+}
+
+.nav-sections vaadin-side-nav-item[current]::part(content) {
+    background: rgba(173, 211, 235, 0.14);
+    border-color: rgba(201, 230, 248, 0.5);
+    color: var(--nav-text-header);
+}
+
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 24px 16px;
+    color: var(--nav-text-header);
+    font-size: var(--aura-font-size-s, 0.875rem);
+    font-weight: 500;
+}
+
+.nav-user .user-name {
+    flex: 1;
+}
+
+.nav-sections vaadin-side-nav {
+    padding: 0;
+}
+
+.nav-sections vaadin-side-nav-item [slot="prefix"],
+.nav-sections vaadin-side-nav-item vaadin-icon {
+    color: inherit;
+}
+
+.nav-user vaadin-avatar {
+    --vaadin-avatar-size: 36px;
+    background: #c47b5b;
+    color: white;
+}
+
+.nav-sections vaadin-side-nav {
+    gap: 0;
+    --vaadin-side-nav-gap: 0px;
+}
+
+.nav-sections vaadin-side-nav::part(label) {
+    padding: 0;
+    min-height: 32px;
+}
+
+.nav-sections vaadin-side-nav::part(children) {
+    gap: 0;
+}
+
+.nav-sections vaadin-side-nav-item::part(content) {
+    box-sizing: border-box;
+    min-height: 40px;
+}
+
+.nav-sections vaadin-side-nav-item vaadin-icon {
+    opacity: 1;
+}
+
+.nav-scroller {
+    padding-block: 0;
+    margin: 0;
+}
+
+.nav-sections {
+    padding: 0;
+}
+
+.nav-scroller {
+    --vaadin-scroller-padding: 0;
+    --vaadin-scroller-padding-block: 0;
+    --vaadin-scroller-padding-inline: 0;
+    padding: 0 16px;
+}
+
+.nav-sections vaadin-side-nav:first-child::part(label) {
+    display: none;
 }
