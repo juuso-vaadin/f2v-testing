@@ -46,7 +46,7 @@ public final class MainLayout extends AppLayout {
                 createNavGroup(null, createItem("Dashboard", null, "dashboard")),
                 createNavGroup("Sales", createItem("Orders", "orders", "orders"),
                         createItem("Deliveries", null, "deliveries"), createItem("Reports", null, "reports")),
-                createNavGroup("Resources", createItem("Employees", null, "employees"),
+                createNavGroup("Resources", createItem("Employees", "employees", "employees"),
                         createItem("Utilisation", null, "utilisation"), createItem("Payroll", null, "payroll")),
                 createNavGroup("Admin", createItem("Access management", null, "access-management"),
                         createItem("Settings", null, "settings")));
@@ -66,7 +66,7 @@ public final class MainLayout extends AppLayout {
         return nav;
     }
 
-    /** Only Orders has a view yet; the other entries are shown without a target. */
+    /** Only Orders and Employees have a view yet; the other entries are shown without a target. */
     private static SideNavItem createItem(String label, String path, String icon) {
         var svg = new SvgIcon("icons/nav-" + icon + ".svg");
         return path == null ? new SideNavItem(label, (String) null, svg) : new SideNavItem(label, path, svg);

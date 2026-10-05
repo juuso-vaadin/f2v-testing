@@ -1,0 +1,87 @@
+.employees-toolbar {
+    padding: var(--vaadin-padding-xl);
+}
+
+.employees-toolbar vaadin-button,
+.employee-form-footer vaadin-button {
+    --vaadin-button-height: 48px;
+}
+
+.employees-kpi-label,
+.employees-kpi-note,
+.employee-form-caption {
+    color: var(--vaadin-text-color-secondary);
+}
+
+.employees-kpi-label,
+.employees-kpi-value {
+    white-space: nowrap;
+}
+
+.employees-kpi-label {
+    line-height: 1.611;
+}
+
+.employees-kpi-value {
+    font-size: 28px;
+    font-weight: var(--aura-font-weight-semibold);
+    line-height: 1.253;
+}
+
+.employees-kpi-note {
+    font-size: var(--aura-font-size-xs);
+    line-height: 1.25;
+}
+
+.employees-kpi-trend {
+    color: var(--aura-green-text);
+}
+
+.employees-kpi-divider {
+    align-self: stretch;
+    width: 1px;
+    background: var(--vaadin-border-color-secondary);
+}
+
+.employees-detail {
+    padding: 0 var(--vaadin-padding-xl) var(--vaadin-padding-xl);
+}
+
+.employee-form {
+    border: 1px solid var(--vaadin-border-color-secondary);
+    border-radius: 12px;
+    background: var(--vaadin-background-container);
+    overflow: hidden;
+}
+
+.employee-form-content {
+    padding: 32px var(--vaadin-padding-xl) 0;
+}
+
+.employee-form-title {
+    margin: 0;
+    font-size: 22px;
+    font-weight: var(--aura-font-weight-semibold);
+    line-height: 1.253;
+}
+
+.employee-form-section-title {
+    margin: 0;
+    font-size: var(--aura-font-size-l);
+    font-weight: var(--aura-font-weight-semibold);
+    line-height: 1.253;
+}
+
+.employee-form-footer {
+    padding: var(--vaadin-padding-l) var(--vaadin-padding-xl);
+    border-top: 1px solid var(--vaadin-border-color-secondary);
+}
+
+.employees-grid {
+    --vaadin-grid-row-selected-background-color: color-mix(in srgb, var(--aura-accent-color) 10%, transparent);
+}
+
+.employees-grid::part(header-cell) {
+    font-size: var(--aura-font-size-s);
+    font-weight: var(--aura-font-weight-medium);
+}

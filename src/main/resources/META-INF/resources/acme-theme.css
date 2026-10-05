@@ -31,9 +31,23 @@ html {
   /* Figma vaadin-input-field-height 48; Aura applies this padding twice, 9px renders a 48px field */
   --vaadin-input-field-padding: 9px 10px;
 
+  /* Field labels: 14px medium in the secondary text color, values 16px medium (Figma Field label / Input field styles) */
+  --vaadin-input-field-label-font-size: var(--aura-font-size-s);
+  --vaadin-input-field-label-font-weight: var(--aura-font-weight-medium);
+  --vaadin-input-field-label-line-height: 17px;
+  --vaadin-input-field-value-font-weight: var(--aura-font-weight-medium);
+
   /* Badges in the design are borderless, with the medium radius */
   --vaadin-badge-border-width: 0;
   --vaadin-badge-border-radius: var(--vaadin-radius-m);
+}
+
+/* Resolved on the fields, not on html: html uses the dark scheme, the content area the light one */
+vaadin-text-field,
+vaadin-combo-box,
+vaadin-date-picker,
+vaadin-radio-group {
+  --vaadin-input-field-label-color: var(--vaadin-text-color-secondary);
 }
 
 /* Badges in the design are tinted with the accent color, without a border */

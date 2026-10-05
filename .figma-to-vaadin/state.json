@@ -11,6 +11,12 @@
       "nodeId": "9094:26504",
       "route": "/orders",
       "status": "verified"
+    },
+    {
+      "name": "Employee list",
+      "nodeId": "6377:6991",
+      "route": "/employees",
+      "status": "built"
     }
   ]
 }
