@@ -1,0 +1,471 @@
+.employees-view {
+    --employees-view-border-color: var(--vaadin-border-color-secondary, rgba(26, 69, 96, 0.12));
+    --employees-view-border: 1px solid var(--employees-view-border-color);
+    --employees-view-accent: #6ab4ac;
+    --employees-view-accent-text: #4b958e;
+    --employees-view-accent-subtle: rgba(155, 212, 179, 0.2);
+    --employees-view-error-text: #d93930;
+    --employees-view-error-subtle: rgba(218, 89, 82, 0.1);
+    --employees-view-error-border: rgba(218, 89, 82, 0.5);
+    --employees-view-subtle-background: rgba(25, 73, 103, 0.06);
+    --employees-view-text: var(--vaadin-text-color, rgba(25, 45, 57, 0.94));
+    --employees-view-heading-text: #192a34;
+    --employees-view-text-secondary: var(--vaadin-text-color-secondary, rgba(27, 51, 65, 0.69));
+    --employees-view-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--vaadin-background-color, white);
+}
+
+.employees-view h2,
+.employees-view h3 {
+    margin: 0;
+    color: var(--employees-view-heading-text);
+    font-weight: var(--aura-font-weight-semibold, 600);
+    line-height: 1.253;
+}
+
+.employees-view h2 {
+    font-size: 22px;
+}
+
+.employees-view h3 {
+    font-size: 18px;
+}
+
+.employees-view-empty {
+    padding: 24px;
+    color: var(--employees-view-text-secondary);
+}
+
+/* Header with the tabs */
+
+.employees-view-header {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding-inline: 24px;
+    border-bottom: var(--employees-view-border);
+}
+
+vaadin-app-layout:not([overlay]) .employees-view-header vaadin-drawer-toggle {
+    display: none;
+}
+
+.employees-view-header vaadin-drawer-toggle {
+    align-self: center;
+}
+
+/* Underlined tabs instead of Aura's pills */
+.employees-view-tabs {
+    --vaadin-tabs-gap: 24px;
+    --vaadin-tabs-padding: 0;
+    --vaadin-tabs-border-width: 0;
+    --vaadin-tabs-background: transparent;
+    min-width: 0;
+}
+
+.employees-view-tabs vaadin-tab {
+    --vaadin-tab-background: transparent;
+    --vaadin-tab-border-width: 0;
+    --vaadin-tab-padding: 10px 0 12px;
+    --vaadin-tab-font-size: 16px;
+    --vaadin-tab-font-weight: var(--aura-font-weight-medium, 500);
+    --vaadin-tab-line-height: 36px;
+    --vaadin-tab-text-color: rgba(28, 56, 74, 0.52);
+    position: relative;
+    min-height: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.employees-view-tabs vaadin-tab:hover {
+    --vaadin-tab-text-color: var(--employees-view-text);
+}
+
+.employees-view-tabs vaadin-tab[selected] {
+    --vaadin-tab-text-color: var(--employees-view-accent-text);
+    background: transparent;
+    box-shadow: none;
+}
+
+.employees-view-tabs vaadin-tab[selected]::before {
+    content: "";
+    position: absolute;
+    inset: auto auto 0 50%;
+    width: 30px;
+    height: 2px;
+    transform: translateX(-50%);
+    border-radius: 1px 1px 0 0;
+    background: var(--employees-view-accent);
+    opacity: 1;
+}
+
+/* List page: toolbar above the master-detail layout */
+
+.employees-view-list {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+.employees-view-list[hidden] {
+    display: none;
+}
+
+.employees-view-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px 24px;
+    padding: 24px;
+}
+
+.employees-view-kpis {
+    display: flex;
+    gap: 24px;
+}
+
+.employees-view-kpi {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 200px;
+}
+
+.employees-view-kpi + .employees-view-kpi {
+    padding-inline-start: 24px;
+    border-inline-start: var(--employees-view-border);
+}
+
+.employees-view-kpi-label {
+    color: var(--employees-view-text-secondary);
+    font-size: 16px;
+    line-height: 1.611;
+}
+
+.employees-view-kpi-value {
+    color: var(--employees-view-text);
+    font-size: 28px;
+    font-weight: var(--aura-font-weight-semibold, 600);
+    line-height: 1.253;
+}
+
+.employees-view-kpi-detail {
+    color: var(--employees-view-text-secondary);
+    font-size: 13px;
+    line-height: 1.25;
+    white-space: pre;
+}
+
+.employees-view-kpi-increase {
+    color: #49760a;
+}
+
+.employees-view-actions {
+    display: flex;
+    gap: 16px;
+}
+
+.employees-view-export {
+    display: flex;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.employees-view-export:focus-visible {
+    outline: 2px solid var(--employees-view-accent);
+    outline-offset: 2px;
+}
+
+/* Buttons, as in the design system */
+
+.employees-view vaadin-button {
+    --vaadin-button-height: 48px;
+    --vaadin-button-padding: 8px 16px;
+    --vaadin-button-gap: 4px;
+    --vaadin-button-border-radius: 8px;
+    --vaadin-button-font-size: 16px;
+    --vaadin-button-font-weight: var(--aura-font-weight-medium, 500);
+    --vaadin-button-background: var(--vaadin-background-color, white);
+    --vaadin-button-border-color: var(--employees-view-border-color);
+    --vaadin-button-text-color: var(--employees-view-heading-text);
+    --vaadin-button-shadow: var(--employees-view-shadow);
+    font-size: 16px;
+    margin: 0;
+}
+
+.employees-view vaadin-button[theme~="primary"] {
+    --vaadin-button-background: var(--employees-view-accent);
+    --vaadin-button-border-color: var(--employees-view-accent);
+    --vaadin-button-text-color: white;
+    --vaadin-button-font-weight: var(--aura-font-weight-semibold, 600);
+}
+
+.employees-view vaadin-button > vaadin-icon[slot="prefix"] {
+    --vaadin-icon-size: 24px;
+    width: 24px;
+    height: 24px;
+    /* The icons have 2px of empty space on each side, of which the design hides some behind the label gap */
+    margin-inline: -4px 0;
+}
+
+/* Master-detail layout */
+
+.employees-view-master-detail {
+    --vaadin-master-detail-layout-border-color: var(--employees-view-border-color);
+    --vaadin-master-detail-layout-border-width: 1px;
+    --vaadin-master-detail-layout-detail-background: var(--vaadin-background-color, white);
+    --aura-master-detail-layout-detail-inset: 0;
+    flex: 1;
+    min-height: 0;
+    border-top: var(--employees-view-border);
+}
+
+.employees-view-master-detail::part(detail) {
+    padding: 0 24px 24px;
+    box-sizing: border-box;
+}
+
+.employees-view-master-detail:not([overlay])::part(detail) {
+    border-inline-start: none;
+}
+
+.employees-view-grid {
+    --vaadin-grid-cell-padding: 0 12px;
+    --vaadin-grid-header-font-size: 14px;
+    --vaadin-grid-header-font-weight: var(--aura-font-weight-medium, 500);
+    --vaadin-grid-header-text-color: var(--employees-view-text);
+    --vaadin-grid-border-color: var(--employees-view-border-color);
+    --vaadin-grid-row-selected-background-color: var(--employees-view-accent-subtle);
+    height: 100%;
+    border-inline-end: var(--employees-view-border);
+}
+
+.employees-view-grid::part(cell) {
+    min-height: 52px;
+}
+
+.employees-view-grid::part(header-cell) {
+    min-height: 54px;
+}
+
+.employees-view-grid::part(body-cell) {
+    color: var(--employees-view-text);
+    font-size: 16px;
+    line-height: 26px;
+}
+
+.employees-view-grid::part(first-column-cell) {
+    padding-inline-start: 24px;
+}
+
+.employees-view-grid::part(last-column-cell) {
+    padding-inline-end: 24px;
+}
+
+.employees-view-grid::part(selected-row-cell) {
+    background-color: var(--employees-view-accent-subtle);
+}
+
+/* Status badges */
+
+.employees-view vaadin-badge {
+    --vaadin-badge-border-radius: 8px;
+    --vaadin-badge-padding: 4px 8px;
+    --vaadin-badge-font-size: 14px;
+    --vaadin-badge-font-weight: var(--aura-font-weight-medium, 500);
+    --vaadin-badge-line-height: 17px;
+    --vaadin-badge-border-width: 0;
+    --vaadin-badge-background: var(--employees-view-accent-subtle);
+    --vaadin-badge-text-color: var(--employees-view-accent-text);
+    flex-shrink: 0;
+}
+
+.employees-view vaadin-badge.status-inactive {
+    --vaadin-badge-background: var(--employees-view-error-subtle);
+    --vaadin-badge-text-color: var(--employees-view-error-text);
+}
+
+.employees-view vaadin-badge.status-on-leave {
+    --vaadin-badge-background: var(--employees-view-subtle-background);
+    --vaadin-badge-text-color: rgba(26, 48, 61, 0.83);
+}
+
+/* Employee form */
+
+.employee-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    border: var(--employees-view-border);
+    border-radius: 12px;
+    background: #f9fafb;
+}
+
+.employee-form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 32px 24px 24px;
+}
+
+.employee-form-header {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.employee-form-title {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+}
+
+.employee-form-service-time {
+    color: var(--employees-view-text-secondary);
+    font-size: 16px;
+    line-height: 1.611;
+}
+
+.employee-form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.employee-form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.employee-form-row > * {
+    flex: 1;
+    min-width: 0;
+}
+
+.employee-form :is(vaadin-text-field, vaadin-email-field, vaadin-date-picker, vaadin-combo-box) {
+    --vaadin-input-field-height: 48px;
+    --vaadin-input-field-background: white;
+    --vaadin-input-field-border-color: rgba(28, 66, 90, 0.16);
+    --vaadin-input-field-border-radius: 8px;
+    --vaadin-input-field-padding: 12px 10px;
+    --vaadin-input-field-value-font-size: 16px;
+    --vaadin-input-field-value-line-height: 22px;
+    --vaadin-input-field-value-font-weight: var(--aura-font-weight-medium, 500);
+    --vaadin-input-field-value-color: var(--employees-view-text);
+    --vaadin-input-field-label-font-size: 14px;
+    --vaadin-input-field-label-line-height: 17px;
+    --vaadin-input-field-label-font-weight: var(--aura-font-weight-medium, 500);
+    --vaadin-input-field-label-color: var(--employees-view-text-secondary);
+    --vaadin-input-field-container-gap: 6px;
+    padding: 0;
+}
+
+.employee-form :is(vaadin-text-field, vaadin-email-field, vaadin-date-picker, vaadin-combo-box)::part(input-field) {
+    box-shadow: var(--employees-view-shadow);
+}
+
+/* The design shows no required indicators; the fields are still validated as required */
+.employee-form ::part(required-indicator) {
+    display: none;
+}
+
+.employee-form-date-of-birth {
+    width: 264px;
+    max-width: 100%;
+}
+
+.employee-form vaadin-radio-group {
+    --vaadin-input-field-label-font-size: 14px;
+    --vaadin-input-field-label-line-height: 17px;
+    --vaadin-input-field-label-font-weight: var(--aura-font-weight-medium, 500);
+    --vaadin-input-field-label-color: var(--employees-view-text-secondary);
+    --vaadin-radio-button-size: 20px;
+    --vaadin-radio-button-gap: 6px;
+    --vaadin-radio-button-border-color: rgba(28, 66, 90, 0.16);
+    --vaadin-radio-button-label-font-size: 16px;
+    --vaadin-radio-button-label-color: var(--employees-view-text);
+    padding: 0;
+}
+
+.employee-form vaadin-radio-group::part(group-field) {
+    column-gap: 12px;
+}
+
+.employee-form vaadin-radio-button[checked] {
+    --vaadin-radio-button-background: var(--employees-view-accent);
+    --vaadin-radio-button-border-color: var(--employees-view-accent);
+    --vaadin-radio-button-dot-color: white;
+}
+
+/* Aura paints the checked radio with its accent color on the part itself */
+.employee-form vaadin-radio-button[checked]::part(radio) {
+    background: var(--employees-view-accent);
+}
+
+.employee-form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 24px;
+    border-top: var(--employees-view-border);
+}
+
+.employee-form-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.employees-view vaadin-button.employee-form-remove {
+    --vaadin-button-background: var(--vaadin-background-color, white);
+    --vaadin-button-border-color: var(--employees-view-error-border);
+    --vaadin-button-text-color: var(--employees-view-error-text);
+}
+
+/* Narrow screens: the details open over the list, and the toolbar figures stack above the actions */
+
+@media (max-width: 800px) {
+    .employees-view-header,
+    .employees-view-toolbar {
+        padding-inline: 16px;
+    }
+
+    .employees-view-kpi {
+        width: auto;
+        min-width: 120px;
+    }
+
+    .employees-view-kpi-value {
+        font-size: 22px;
+    }
+
+    .employees-view-master-detail::part(detail) {
+        padding: 0;
+    }
+
+    .employees-view-master-detail[overlay] .employee-form {
+        border: none;
+        border-radius: 0;
+    }
+
+    .employee-form-content {
+        padding: 24px 16px;
+    }
+
+    .employee-form-footer {
+        padding: 16px;
+    }
+}

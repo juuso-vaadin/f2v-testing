@@ -1,5 +1,6 @@
 package com.example.base.ui;
 
+import com.example.employees.ui.EmployeesView;
 import com.example.orders.ui.OrdersView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -45,7 +46,10 @@ public final class MainLayout extends AppLayout {
                 createItem("Reports", "reports", null));
 
         var resources = new SideNav("Resources");
-        resources.addItem(createItem("Employees", "employees", null),
+        var employees = createItem("Employees", "employees", EmployeesView.class);
+        // Keeps Employees current while an employee is selected, as in employees/2
+        employees.setMatchNested(true);
+        resources.addItem(employees,
                 createItem("Utilisation", "utilisation", null),
                 createItem("Payroll", "payroll", null));
 
