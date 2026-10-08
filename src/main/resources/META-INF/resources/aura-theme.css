@@ -1,0 +1,20 @@
+html {
+  color-scheme: light;
+
+  /* Font family - Noto Sans from Figma design */
+  --aura-font-family: 'Noto Sans', var(--aura-font-family-system);
+
+  /* Base font size - 16px from Figma (vs default 14) */
+  --aura-base-font-size: 16;
+
+  /* Border radius - 8px from Figma design (vs default 3) */
+  --aura-base-radius: 8;
+
+  /* Accent color - teal from Figma primary color */
+  --aura-accent-color-light: #6ab4ac;
+  --aura-accent-color-dark: #6ab4ac;
+
+  /* Input field styling from Figma */
+  --vaadin-input-field-border-color: #1c425a29;
+  --vaadin-input-field-border-width: 1px;
+}

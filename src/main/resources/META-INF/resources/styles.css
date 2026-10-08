@@ -1,4 +1,6 @@
 /* Add your styles here */
+@import "aura-theme.css";
+@import "order-list.css";
 
 .app-logo {
     border-radius: min(40%, var(--vaadin-radius-m));

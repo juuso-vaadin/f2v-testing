@@ -1,0 +1,16 @@
+{
+  "figmaFileUrl": "https://www.figma.com/design/Hv2rStg1rwBXbW2XK5jGtz/Figma-MCP-exercises---AcmeCorp",
+  "fileKey": "Hv2rStg1rwBXbW2XK5jGtz",
+  "vaadinVersion": "25.3.0",
+  "theme": "aura",
+  "appStartCommand": ".vaadin/vaadin-dev start",
+  "appBaseUrl": "http://localhost:8080",
+  "targets": [
+    {
+      "name": "Employee list",
+      "nodeId": "9094:26504",
+      "route": "/",
+      "status": "verified"
+    }
+  ]
+}
